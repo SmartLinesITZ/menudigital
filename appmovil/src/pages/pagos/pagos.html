@@ -1,0 +1,33 @@
+<!--
+  Generated template for the Pagos page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+  	<ion-title>
+   		Wings Army
+   	</ion-title>
+  </ion-navbar>	
+</ion-header>
+
+<ion-content padding>
+<ion-col offset-7>
+ <ion-img width="100" height="60" src="http://rzk8q98rbwwseoge.zippykid.netdna-cdn.com/wp-content/uploads/2011/05/image37.png"></ion-img>
+ </ion-col>
+
+<br><br>
+<h4>Pagar con mi cuenta PayPal</h4>
+<p>Inicie sesión en su cuenta para pagar.</p>
+<ion-item>
+    <ion-label color="primary" stacked>Correo electronico</ion-label>
+    <ion-input type="email" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Contraseña de PayPal</ion-label>
+    <ion-input type="password" ></ion-input>
+  </ion-item><br>
+  <button ion-button full (click)="goToLoginPage()">Acceder</button>
+</ion-content>

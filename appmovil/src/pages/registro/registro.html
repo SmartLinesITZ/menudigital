@@ -1,0 +1,52 @@
+<!--
+  Generated template for the Registro page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating color="primary">Nombre</ion-label>
+      <ion-input type="text" #name></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Correo Electronico</ion-label>
+      <ion-input type="text" #email></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Telefono</ion-label>
+      <ion-input type="text" #mobile></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Usuario</ion-label>
+      <ion-input type="text" #user></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Contraseña</ion-label>
+      <ion-input type="password" #password1></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="primary">Confirmar contraseña</ion-label>
+      <ion-input type="password" #password2></ion-input>
+    </ion-item>
+    <br><br>
+    <button ion-button block color="primary" (click)="goToLoginPage()">Submit</button>
+
+  </ion-list>
+
+</ion-content>

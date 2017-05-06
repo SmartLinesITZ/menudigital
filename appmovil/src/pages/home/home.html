@@ -1,0 +1,73 @@
+<!--<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Menú digital
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<br><br><br>
+  <h1>Bienvenido</h1>
+  <p>
+    Optimiza tu tiempo en espera al realizar un pedido de tu comida favorita. <br><br>
+    Aquí podrás realizar tus pedidos y/o reservaciones en el lugar que decees comer.<br><br>
+    Crea tu orden desde aquí y no pierdas tiempo en espera a ser atendido.<br>
+  </p><br>
+   <button ion-button full [navPush]="LoginPage">Comenzar</button>
+   <button ion-button full (click)="goToUbicacionPage()">Obtener mi ubicacion</button>-->
+<!--
+  <ion-list>
+  	<ion-item *ngFor="let item of lists">
+  		{{item.name}}
+  	</ion-item>
+  </ion-list>
+  <button ion-button (click)="goToUsersPage()">Usuarios</button>
+ 
+  
+</ion-content>-->
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()">Skip</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce color="primary">
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+
+    <ion-slide>
+      <img src="assets/icon/ica-slidebox-img-1.png" class="slide-image"/>
+      <h2 class="slide-title">
+        Welcome to <b>ICA</b>
+      </h2>
+      <p>
+        The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/icon/ica-slidebox-img-2.png" class="slide-image"/>
+      <h2 class="slide-title" >What is Ionic?</h2>
+      <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/icon/ica-slidebox-img-3.png" class="slide-image"/>
+      <h2 class="slide-title">What is Ionic Platform?</h2>
+      <p>The <b>Ionic Platform</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/icon/ica-slidebox-img-4.png" class="slide-image"/>
+      <h2 class="slide-title">¿Estas listo para la experiencia?</h2>
+      <button ion-button icon-right large clear (click)="startApp()">
+        Comenzar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
+
