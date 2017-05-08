@@ -15,7 +15,9 @@ import { Reservacion } from '../reservacion/reservacion';
   templateUrl: 'servicios.html',
 })
 export class Servicios {
+  restaurante;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    //this.restaurante=navParams.data.restaurante;
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Servicios');

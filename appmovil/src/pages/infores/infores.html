@@ -5,22 +5,21 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Wings Army</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{inforest.nombrerest}}</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <h3>¿Porqué elegirnos?</h3>
-
   <p>{{inforest.descripcion}}</p>
   <h5>Horarios:</h5>
   <p>{{inforest.horarios}}</p>
-
-<h5>Localización</h5>
-
+  <button ion-button outline item-right icon-left>
+    <ion-icon name="pin"></ion-icon>
+    Ubicación
+  </button>
   <ion-fab bottom right>
-    <button ion-fab (click)="goToServiciosPage()"><ion-icon name="exit"></ion-icon></button>   
+  <!--button ion-fab (click)="goToServiciosPage(inforest)"><ion-icon name="exit"></ion-icon></button-->   
+  <button ion-fab (click)="goToServiciosPage()"><ion-icon name="exit"></ion-icon></button>   
   </ion-fab>
-
 </ion-content>

@@ -24,7 +24,8 @@ export class Infores {
     console.log('ionViewDidLoad Infores');
   }
   goToServiciosPage(){
-  	this.navCtrl.push(Servicios);
+  //	this.navCtrl.push(Servicios,{restaurante:inforest});
+    this.navCtrl.push(Servicios);
   }
 
 }
