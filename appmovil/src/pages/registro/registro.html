@@ -32,12 +32,12 @@
 
     <ion-item>
       <ion-label floating color="primary">Usuario</ion-label>
-      <ion-input type="text" #user></ion-input>
+      <ion-input type="text" #usuario></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating color="primary">Contraseña</ion-label>
-      <ion-input type="password" #password1></ion-input>
+      <ion-input type="password" #password></ion-input>
     </ion-item>
 
     <ion-item>
@@ -45,7 +45,7 @@
       <ion-input type="password" #password2></ion-input>
     </ion-item>
     <br><br>
-    <button ion-button block color="primary" (click)="goToLoginPage()">Submit</button>
+    <button ion-button block color="primary" (click)="Insert(usuario.value,password.value)">Submit</button>
 
   </ion-list>
 
