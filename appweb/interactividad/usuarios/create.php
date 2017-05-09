@@ -14,16 +14,12 @@ function compruebausuario($usuario,$password,$link){
 	if (!$query){
 	//die("<p>Fallo la insersion a la base de datos: ".mysql_error()."</p>");
 		$row_array['error']  = 'Algo salio mal';
-		array_push($response, $row_array);
-		echo $json_string = json_encode($response);
-		mysql_close();
+		finish($response,$row_array);
 	}else{
 		$numrows=mysql_num_rows($query);
 		if($numrows==1){
 			$row_array['error']  = 'El usuario ya existe';
-			array_push($response, $row_array);
-			echo $json_string = json_encode($response);
-			mysql_close();
+			finish($response,$row_array);
 		}else{
 			insertausuario($usuario,$password,$link);
 		}
@@ -35,14 +31,10 @@ function insertausuario($usuario,$password,$link){
 	$query = mysql_query("INSERT INTO user VALUES (null,'$usuario','$encrypt')", $link);
 	if (!$query){
 		$row_array['error']  = 'Algo salio mal';
-		array_push($response, $row_array);
-		echo $json_string = json_encode($response);
-		mysql_close();
+		finish($response,$row_array);
 	}else{
 		$row_array['mensaje']  = 'success';
-		array_push($response, $row_array);
-		echo $json_string = json_encode($response);
-		mysql_close();
+		finish($response,$row_array);
 	}
 }
 function createusuario(){
@@ -51,9 +43,12 @@ function createusuario(){
 		die("<p>Fallo la insersion a la base de datos: ".mysql_error()."</p>");
 	}else{
 		$row_array['error']  = 'Algo Salio mal';
-		array_push ($response, $row_array);
+		finish($row_array,$response);
+	}
+}
+function finish($response,$row_array){
+	array_push ($response, $row_array);
 		echo $json_string = json_encode($response);
 		mysql_close();
-	}
 }
 ?>
