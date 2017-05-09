@@ -25,10 +25,10 @@ import { AlertController } from 'ionic-angular';
    goToLoginPage(){
      this.navCtrl.push(Login);
    }
-   public Insert(usuario: string, password:string)
+   public Insert(nombre:string, correo:string, telefono:string, usuario: string, password:string)
    {
      //this.presentLoading();
-     this.data.InsertMember(usuario,password).subscribe(
+     this.data.InsertUser(nombre,correo,telefono,usuario,password).subscribe(
        data => {
          this.respuesta=data;
          //console.log(data);
@@ -42,6 +42,20 @@ import { AlertController } from 'ionic-angular';
            alert.present();
            this.navCtrl.popTo(Login);
          
+         }else if(this.respuesta[0].error == "fail"){
+            let alert = this.alertCtrl.create({
+             title: 'Error',
+             subTitle: 'Algo salio mal',
+             buttons: ['OK']
+           });
+           alert.present();
+         }else{
+            let alert = this.alertCtrl.create({
+             title: 'El usuario ya existe',
+             subTitle: 'Intenta con otro',
+             buttons: ['OK']
+           });
+           alert.present();
          }
        },
        err => {
@@ -49,5 +63,8 @@ import { AlertController } from 'ionic-angular';
        },
        () => console.log('Movie Search Complete')
        );
+   }
+   exito(){
+
    }
  }

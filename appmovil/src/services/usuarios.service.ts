@@ -9,9 +9,9 @@ export class ServicesUsuarios {
  /* getRest(){
   	return this.http.get("http://localhost:8000/api/restaurante");
   }*/
-   InsertMember(usuario,password)
+   InsertUser(nombre,correo,telefono,usuario,password)
   {
-    var url = 'http://smartlines.hol.es/interactividad/usuarios/create.php?usuario='+usuario+'&password='+password;
+    var url = 'http://smartlines.hol.es/interactividad/usuarios/create.php?nombre='+nombre+'&correo='+correo+'&telefono='+telefono+'&usuario='+usuario+'&password='+password;
     var response = this.http.get(url).map(res => res.json());
     return response;
   }

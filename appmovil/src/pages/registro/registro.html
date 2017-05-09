@@ -17,17 +17,17 @@
 
     <ion-item>
       <ion-label floating color="primary">Nombre</ion-label>
-      <ion-input type="text" #name></ion-input>
+      <ion-input type="text" #nombre></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating color="primary">Correo Electronico</ion-label>
-      <ion-input type="text" #email></ion-input>
+      <ion-input type="text" #correo></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating color="primary">Telefono</ion-label>
-      <ion-input type="text" #mobile></ion-input>
+      <ion-input type="text" #telefono></ion-input>
     </ion-item>
 
     <ion-item>
@@ -45,7 +45,7 @@
       <ion-input type="password" #password2></ion-input>
     </ion-item>
     <br><br>
-    <button ion-button block color="primary" (click)="Insert(usuario.value,password.value)">Submit</button>
+    <button ion-button block color="primary" (click)="Insert(nombre.value,correo.value,telefono.value,usuario.value,password.value)">Submit</button>
 
   </ion-list>
 

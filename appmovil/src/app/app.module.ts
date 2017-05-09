@@ -5,7 +5,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
-import { AlertController } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { Menu } from '../pages/menu/menu';
 import { Users } from '../pages/users/users';
