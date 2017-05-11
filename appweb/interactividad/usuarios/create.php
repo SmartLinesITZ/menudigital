@@ -15,13 +15,13 @@ function compruebaUsuario($name,$correo,$telefono,$usuario,$password,$link){
 	$query = mysql_query("SELECT * FROM user WHERE username='$usuario'", $link);
 	if (!$query){
 	die("<p>Fallo la insersion a la base de datos: ".mysql_error()."</p>");
-		$row_array['error']  = 'fail';
+		$row_array['error']  = 'error';
 		finish($row_array);
 	}else{
 		$numrows=mysql_num_rows($query);
 		//echo $numrows;
 		if($numrows>0){
-			$row_array['error']  = 'El usuario ya existe';
+			$row_array['mensaje']  = 'El usuario ya existe';
 			finish($row_array);
 		}else{
 			insertaUsuario($name,$correo,$telefono,$usuario,$password,$link);
@@ -33,7 +33,7 @@ function insertaUsuario($name,$correo,$telefono,$usuario,$password,$link){
 	$encrypt=md5($password);
 	$query = mysql_query("INSERT INTO user VALUES (null,'$usuario','$encrypt')", $link);
 	if (!$query){
-		$row_array['error']  = 'fail';
+		$row_array['mensaje']  = 'error';
 		finish($row_array);
 	}else{
 		asignacionId($name,$correo,$telefono,$usuario,$link);
@@ -46,7 +46,7 @@ function asignacionId($name,$correo,$telefono,$usuario,$link){
 	$idUsuario=$row['idusuario'];
 	//echo $idUsuario;
 	if (!$query){
-		$row_array['error']  = 'fail';
+		$row_array['mensaje']  = 'error';
 		finish($row_array);
 	}else{
 		//echo $idUsuario;
@@ -57,7 +57,7 @@ function saveDateUser($idUsuario,$name,$correo,$telefono,$link){
 	//echo $idUsuario." ".$name." ".$correo.$telefono;
 	$query = mysql_query("INSERT INTO usuarios VALUES ($idUsuario,'$correo','$name','$telefono','null','movil',1)", $link) or die(mysql_error());
 	if (!$query){
-		$row_array['error']  = 'fail';
+		$row_array['mensaje']  = 'error';
 		finish($row_array);
 	}else{
 		$row_array['mensaje']  = 'success';

@@ -27,10 +27,10 @@ import { Pruebajson } from '../pages/pruebajson/pruebajson';
 
 //import { GeolocationService } from '../services/geolocation.service';
 //import { Geolocation } from '@ionic-native/geolocation';
-import { ServicePrueba } from '../services/pruebaservicios.service';
-import { ServicesRestaurante } from '../services/restaurante.service';
-import { ServicesUsuarios } from '../services/usuarios.service'
-
+import { ServicePrueba } from '../providers/pruebaservicios.service';
+import { ServicesRestaurante } from '../providers/restaurante.service';
+import { ServicesUsuarios } from '../providers/usuarios.service';
+import { ServicesServicios } from '../providers/servicios.service';
 
 @NgModule({
   declarations: [
@@ -87,6 +87,7 @@ import { ServicesUsuarios } from '../services/usuarios.service'
     ServicesUsuarios,
     ServicesRestaurante,
     ServicePrueba,
+    ServicesServicios,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

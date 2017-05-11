@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams,LoadingController} from 'ionic-angular';
-import { ServicePrueba } from '../../services/pruebaservicios.service';
+import { ServicePrueba } from '../../providers/pruebaservicios.service';
 /**
  * Generated class for the Pruebajson page.
  *
