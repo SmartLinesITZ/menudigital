@@ -13,23 +13,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="masters" color="primary">
 	<div class="logo">
     <img src="assets/icon/appicon.svg" alt="Ionic logo">
   </div>
-	<ion-item>
-   	    <ion-label color="primary" floating>User:</ion-label>
-    	<ion-input></ion-input>
+  <ion-item>
+    <ion-label color="primary" floating>User:</ion-label>
+    <ion-input type="text" #usuario></ion-input>
   </ion-item>
   <ion-item>
-   	    <ion-label color="primary" floating>Password:</ion-label>
-    	<ion-input></ion-input>
+    <ion-label color="primary" floating>Password:</ion-label>
+    <ion-input type="password" #password></ion-input>
   </ion-item>
-
-  <button ion-button full clear (click)="goToOpcionesPage()">Acceder</button>
+  <button ion-button full clear (click)="compruebaAcceso(usuario.value,password.value)">Acceder</button>
   <button ion-button clear full (click)="goToRegistroPage()">¿No estás registrado?</button> 
   <button ion-button full icon-right (click)="goToOpcionesPage()">
-  Iniciar con facebook
- <ion-icon name="logo-facebook"></ion-icon>
-</button>
+    Iniciar con facebook
+    <ion-icon name="logo-facebook"></ion-icon>
+  </button>
 </ion-content>

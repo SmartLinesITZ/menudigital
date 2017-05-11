@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Login } from '../login/login';
-import { ServicesUsuarios } from '../../services/usuarios.service';
+import { ServicesUsuarios } from '../../providers/usuarios.service';
 import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the Registro page.
@@ -42,7 +42,7 @@ import { AlertController } from 'ionic-angular';
            alert.present();
            this.navCtrl.popTo(Login);
          
-         }else if(this.respuesta[0].error == "fail"){
+         }else if(this.respuesta[0].mensaje == "error"){
             let alert = this.alertCtrl.create({
              title: 'Error',
              subTitle: 'Algo salio mal',
