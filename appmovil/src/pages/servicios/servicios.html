@@ -21,11 +21,11 @@
 		</ion-card-content>
 		</ion-card>
 		<br>
-		<button ion-button full  color="secondary" [hidden]="servicios.panticipado.length==0" (click)="goToMenuPage()">Pedido anticipado</button>
+		<button ion-button full  color="secondary"(click)="goToMenuPage()">Pedido anticipado</button>
 		<br>
-		<button ion-button full  color="secondary" [hidden]="servicios.reservacion.length==0" (click)="goToReservacionPage()">Reservación</button>
+		<button ion-button full  color="secondary" (click)="goToReservacionPage()">Reservación</button>
 		<br>
-		<button ion-button full color="secondary" [hidden]="servicios.pdomicilio.length==0" (click)="goToUbicacionPage()">Pedido a domicilio</button>
+		<button ion-button full color="secondary" (click)="goToUbicacionPage()">Pedido a domicilio</button>
 		<br>
 	
 </ion-content>
