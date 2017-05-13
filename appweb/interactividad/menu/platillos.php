@@ -8,7 +8,7 @@
   function selectPlatillos($idcategoria,$idrestaurante,$link){
     $response = array();
   $query = mysql_query("SELECT * FROM platillo,categoria
-    WHERE  platillo.idcategoria= $idcategoria AND platillo.idcategoria = categoria.idcategoria AND idrestaurante=$idrestaurante", $link)or die(mysql_error());
+    WHERE  platillo.idcategoria= $idcategoria AND idrestaurante = $idrest AND platillo.idcategoria = categoria.idcategoria AND idrestaurante=$idrestaurante", $link)or die(mysql_error());
   if (!$query){
     $row_array['mensaje']  = 'fail';
   }else{
