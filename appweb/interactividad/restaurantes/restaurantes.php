@@ -17,10 +17,7 @@
           selectTodo($link);
           break;
   }
-
-
-
-  function selectDesayuno($link){
+  function selectDesayuno($link){  
   $query = mysql_query("SELECT * FROM restaurante,servicios
     WHERE restaurante.idrestaurante = servicios.idrestaurante and servicios.desayuno=1", $link)or die(mysql_error());
   if (!$query){
@@ -28,14 +25,12 @@
   }else{
     $response = array();
       while($rows = mysql_fetch_array($query)){
-        $row_array['idrestaurante']  = utf8_decode($rows['idrestaurante']);
-        $row_array['nombrerest']  = utf8_decode($rows['nombrerest']);
-        $row_array['horarios']  = utf8_decode($rows['horarios']);
-        $row_array['logo']  = utf8_decode($rows['logo']);
-        $row_array['descripcion']  = utf8_decode($rows['descripcion']);
-        array_push ($response, $row_array);
-
-
+        $row_array['idrestaurante']  = $rows['idrestaurante'];
+        $row_array['nombrerest']  = $rows['nombrerest'];
+        $row_array['horarios']  = $rows['horarios'];
+        $row_array['logo']  = $rows['logo'];
+        $row_array['descripcion']  = $rows['descripcion'];
+         array_push($response, $row_array);  
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -47,19 +42,15 @@
     WHERE restaurante.idrestaurante = servicios.idrestaurante and servicios.comida=1", $link)or die(mysql_error());
   if (!$query){
     $row_array['mensaje']  = 'fail';
-
   }else{
-
     $response = array();
       while($rows = mysql_fetch_array($query)){
-        $row_array['idrestaurante']  = utf8_decode($rows['idrestaurante']);
-        $row_array['nombrerest']  = utf8_decode($rows['nombrerest']);
-        $row_array['horarios']  = utf8_decode($rows['horarios']);
-        $row_array['logo']  = utf8_decode($rows['logo']);
-        $row_array['descripcion']  = utf8_decode($rows['descripcion']);
-        array_push ($response, $row_array);
-
-
+        $row_array['idrestaurante']  = $rows['idrestaurante'];
+        $row_array['nombrerest']  = $rows['nombrerest'];
+        $row_array['horarios']  = $rows['horarios'];
+        $row_array['logo']  = $rows['logo'];
+        $row_array['descripcion']  = $rows['descripcion'];
+         array_push($response, $row_array); 
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -76,14 +67,12 @@
 
     $response = array();
       while($rows = mysql_fetch_array($query)){
-        $row_array['idrestaurante']  = utf8_decode($rows['idrestaurante']);
-        $row_array['nombrerest']  = utf8_decode($rows['nombrerest']);
-        $row_array['horarios']  = utf8_decode($rows['horarios']);
-        $row_array['logo']  = utf8_decode($rows['logo']);
-        $row_array['descripcion']  = utf8_decode($rows['descripcion']);
-        array_push ($response, $row_array);
-
-
+        $row_array['idrestaurante']  = $rows['idrestaurante'];
+        $row_array['nombrerest']  = $rows['nombrerest'];
+        $row_array['horarios']  = $rows['horarios'];
+        $row_array['logo']  = $rows['logo'];
+        $row_array['descripcion']  = $rows['descripcion'];
+         array_push($response, $row_array); 
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -94,25 +83,18 @@
   $query = mysql_query("SELECT * FROM restaurante", $link)or die(mysql_error());
   if (!$query){
     $row_array['mensaje']  = 'fail';
-
   }else{
-
     $response = array();
       while($rows = mysql_fetch_array($query)){
-        $row_array['idrestaurante']  = utf8_decode($rows['idrestaurante']);
-        $row_array['nombrerest']  = utf8_decode($rows['nombrerest']);
-        $row_array['horarios']  = utf8_decode($rows['horarios']);
-        $row_array['logo']  = utf8_decode($rows['logo']);
-        $row_array['descripcion']  = utf8_decode($rows['descripcion']);
-        array_push ($response, $row_array);
-
-
+        $row_array['idrestaurante']  = $rows['idrestaurante'];
+        $row_array['nombrerest']  = $rows['nombrerest'];
+        $row_array['horarios']  = $rows['horarios'];
+        $row_array['logo']  = $rows['logo'];
+        $row_array['descripcion']  = $rows['descripcion'];
+         array_push($response, $row_array); 
       }
       echo $json_string = json_encode($response);
       mysql_close();
     }
   }
-
-
-
 ?>

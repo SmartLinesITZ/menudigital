@@ -5,9 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
 	<ion-navbar color="primary">
-		 <ion-title>{{inforest.nombrerest}}</ion-title>
+		<ion-title>{{inforest.nombrerest}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -19,16 +18,13 @@
 		<ion-card-content>
 			Elige el servicio que requieras...
 		</ion-card-content>
-		</ion-card>
-		<br>
-		<button ion-button full  color="secondary" ng-show="servicios.panticipado == 'true'" (click)="goToMenuPage()">Pedido anticipado
-	{{gi}}
-		</button>
-		<br>
-		<button ion-button full  color="secondary" (click)="goToReservacionPage()">Reservación</button>
-		<br>
-		<button ion-button full color="secondary" (click)="goToUbicacionPage()">Pedido a domicilio</button>
-		<br>
-	
+	</ion-card>
+	<br>
+	<button ion-button full color="secondary" (click)="goToMenuPage(inforest)">Pedido anticipado</button>
+	<br>
+	<button ion-button full color="secondary" (click)="goToReservacionPage()">Reservación</button>
+	<br>
+	<button ion-button full color="secondary" (click)="goToUbicacionPage()">Pedido a domicilio</button>
+	<br>
 </ion-content>
 
