@@ -17,7 +17,11 @@
           selectTodo($link);
           break;
   }
+<<<<<<< HEAD
   function selectDesayuno($link){
+=======
+  function selectDesayuno($link){  
+>>>>>>> b05d8adcd4ac782ff328dbe81a70bca5747c19f8
   $query = mysql_query("SELECT * FROM restaurante,servicios
     WHERE restaurante.idrestaurante = servicios.idrestaurante and servicios.desayuno=1", $link)or die(mysql_error());
   if (!$query){
@@ -30,7 +34,11 @@
         $row_array['horarios']  = $rows['horarios'];
         $row_array['logo']  = $rows['logo'];
         $row_array['descripcion']  = $rows['descripcion'];
+<<<<<<< HEAD
          array_push($response, $row_array);
+=======
+         array_push($response, $row_array);  
+>>>>>>> b05d8adcd4ac782ff328dbe81a70bca5747c19f8
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -50,7 +58,11 @@
         $row_array['horarios']  = $rows['horarios'];
         $row_array['logo']  = $rows['logo'];
         $row_array['descripcion']  = $rows['descripcion'];
+<<<<<<< HEAD
          array_push($response, $row_array);
+=======
+         array_push($response, $row_array); 
+>>>>>>> b05d8adcd4ac782ff328dbe81a70bca5747c19f8
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -70,7 +82,11 @@
         $row_array['horarios']  = $rows['horarios'];
         $row_array['logo']  = $rows['logo'];
         $row_array['descripcion']  = $rows['descripcion'];
+<<<<<<< HEAD
          array_push($response, $row_array);
+=======
+         array_push($response, $row_array); 
+>>>>>>> b05d8adcd4ac782ff328dbe81a70bca5747c19f8
       }
       echo $json_string = json_encode($response);
       mysql_close();
@@ -89,7 +105,11 @@
         $row_array['horarios']  = $rows['horarios'];
         $row_array['logo']  = $rows['logo'];
         $row_array['descripcion']  = $rows['descripcion'];
+<<<<<<< HEAD
          array_push($response, $row_array);
+=======
+         array_push($response, $row_array); 
+>>>>>>> b05d8adcd4ac782ff328dbe81a70bca5747c19f8
       }
       echo $json_string = json_encode($response);
       mysql_close();

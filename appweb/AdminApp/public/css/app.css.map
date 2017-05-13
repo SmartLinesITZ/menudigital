@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAEA;EAEE,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,aAAa,EACd","file":"app.css","sourcesContent":["// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\r\n\r\n.floating\r\n{\r\n  position: fixed;\r\n  bottom: 2em;\r\n  right: 2em;\r\n  z-index: 100;\r\n}\r\n"]}
