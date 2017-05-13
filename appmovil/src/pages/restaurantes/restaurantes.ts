@@ -37,10 +37,7 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
        () => console.log('Movie Search Complete')
        );
    }
-   mostrarRestaurantes()
-   {
 
-   }
    search(event, key)
    {
      if(event.target.value.length > 0) {

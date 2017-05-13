@@ -1,15 +1,17 @@
 <ion-header>
-  <ion-navbar color="nombrerest">
+  <ion-navbar color="primary">
     <ion-title>{{inforest.nombrerest}}</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-	<h1>Tu menú digital</h1>
-  <ion-list>
-      <ion-label color="primary" *ngFor="let categoria of getcategorias">
-        {{categoria.nomcategoria}}
-      </ion-label>
+  <div *ngFor="let categoria of categorias" class="animate-repeat-category">
+  <button color="primary">
+      {{ categoria.nomcategoria }}
+    </button>
+  </div>
+    <!--ion-label color="primary" *ngFor="let categoria of categorias">
+      {{categoria.nomcategoria}}
+    </ion-label>
     <ion-item *ngFor="let platillo of platillos">
       <button ion-item (click)="goToIngredientesPage()">
         <ion-avatar item-left>
@@ -19,9 +21,8 @@
         <p>{{platillo.descripcion}}</p>
       </button>
       <button ion-button clear item-right>$ {{platillo.precio}}</button>
-      </ion-item>
-  </ion-list>
-  <ion-fab bottom right>
-   <button ion-fab (click)="goToOrdenPage()"><ion-icon name="basket">3</ion-icon></button>
- </ion-fab>
-</ion-content>
+    </ion-item-->
+    <ion-fab bottom right>
+     <button ion-fab (click)="goToOrdenPage()"><ion-icon name="basket">3</ion-icon></button>
+   </ion-fab>
+ </ion-content>
