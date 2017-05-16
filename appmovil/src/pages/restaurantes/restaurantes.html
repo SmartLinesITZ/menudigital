@@ -30,7 +30,7 @@
   </ion-item-sliding-->
   <ion-list class="restaurantes">
     <ion-item-sliding  color="primary" *ngFor="let restaurante of restaurantes">
-      <ion-item (click)="goToInforesPage(restaurante)">
+      <ion-item (click)="goToInforesPage(restaurante,iduser)">
         <ion-avatar item-left>
           <img src="{{restaurante.logo}}">
         </ion-avatar>

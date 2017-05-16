@@ -7,15 +7,16 @@ import { Servicios } from '../servicios/servicios';
 })
 export class Infores {
   inforest;
-
+  iduser;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.inforest = navParams.data.restaurante;
+    this.iduser = navParams.data.iduser;
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Infores');
   }
-  goToServiciosPage(inforest){
-  this.navCtrl.push(Servicios,{inforest:inforest});
+  goToServiciosPage(inforest,iduser){
+  this.navCtrl.push(Servicios,{inforest:inforest,iduser:iduser});
    // this.navCtrl.push(Servicios);
   }
 

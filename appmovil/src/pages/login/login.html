@@ -5,30 +5,31 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <!--ion-navbar color="primary">
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Iniciar sesion</ion-title>
-  </ion-navbar-->
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding class="ion-content" color="primary">
 	<div class="logo">
     <img src="assets/icon/logo.png" alt="Ionic logo">
   </div>
+
   <ion-item class="ion-item">
-    <ion-label color="white" floating>User:</ion-label>
-    <ion-input type="text" #usuario></ion-input>
+    <ion-label color="primary" floating>User:</ion-label>
+    <ion-input type="text"  color="wite" class="ion-input" #usuario></ion-input>
   </ion-item>
   <ion-item class="ion-item">
-    <ion-label color="white" floating>Password:</ion-label>
-    <ion-input type="password" #password></ion-input>
+    <ion-label color="primary" floating>Password:</ion-label>
+    <ion-input type="password"  class="ion-input" #password></ion-input>
   </ion-item>
-  <button ion-button full clear color="white" (click)="compruebaAcceso(usuario.value,password.value)">Acceder</button>
-  <button ion-button clear full color="white" (click)="goToRegistroPage()">¿No estás registrado?</button> 
+  <button ion-button full clear color="primary" (click)="compruebaAcceso(usuario.value,password.value)">Acceder</button>
+  <button ion-button clear full color="primary" (click)="goToRegistroPage()">¿No estás registrado?</button> <br>
   <button ion-button full icon-right color="white" (click)="goToOpcionesPage()">
-    <ion-label color="primary">Iniciar con facebook</ion-label>
+    Iniciar con facebook
     <ion-icon name="logo-facebook"></ion-icon>
   </button>
 </ion-content>

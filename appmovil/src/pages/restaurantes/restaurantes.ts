@@ -17,10 +17,12 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
    restaurantes: Array<any>;
    loader: any;
    opcion:string;
+   iduser;
    // restaurantes:any []=[];
    //restaurante:IRestaurante = {nombrerest:"", horarios:"",logo:""};
    constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesRestaurante, public loadingCtrl:LoadingController) {
      this.opcion = navParams.data.opcion;  
+     this.iduser = navParams.data.iduser;
    }
    ngOnInit() {
 
@@ -71,8 +73,8 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
    ionViewDidLoad() {
      console.log('ionViewDidLoad Lists');
    }
-   goToInforesPage(restaurante){
-     this.navCtrl.push(Infores,{restaurante:restaurante});
+   goToInforesPage(restaurante,iduser){
+     this.navCtrl.push(Infores,{restaurante:restaurante, iduser:iduser});
    }
  }
 /*

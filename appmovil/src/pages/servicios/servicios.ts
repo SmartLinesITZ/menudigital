@@ -11,8 +11,10 @@ import { ServicesServicios } from '../../providers/servicios.service';
 export class Servicios {
   servicios:Array<any>;
   inforest;
+  iduser;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
     this.inforest=navParams.data.inforest;
+    this.iduser = navParams.data.iduser;
   }
   ionViewDidLoad() {
    this.data.servicios(this.inforest.idrestaurante).subscribe(
@@ -33,7 +35,7 @@ export class Servicios {
   goToUbicacionPage(){
   	this.navCtrl.push(Ubicacion);
   }
-  goToReservacionPage(){
-    this.navCtrl.push(Reservacion);
+  goToReservacionPage(inforest,iduser){
+    this.navCtrl.push(Reservacion,{inforest:inforest,iduser:iduser});
   }
 }

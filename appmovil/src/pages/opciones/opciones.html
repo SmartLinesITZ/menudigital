@@ -5,32 +5,30 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="primary">
-</ion-navbar>
+   <ion-navbar color="primary">
+    <ion-title>Hola</ion-title>
+  </ion-navbar>
 </ion-header>
-
-
 <ion-content padding color="primary">
  <ion-card-header padding>
      <h1 color="primary">¿Qué deseas hacer?</h1>
-
     <p>Ayudanos a darte opciones a las cuales puedes <br>ir de acuerdo a las necesidades que requieras...</p>
   </ion-card-header>
 <ion-card>
   <ion-list color="primary">
-    <button ion-item (click)="goToRestaurantesPage(1)">
+    <button ion-item (click)="goToRestaurantesPage(1,iduser)">
       <ion-icon name="restaurant" item-left></ion-icon>
       	Desayuno
     </button>
-    <button ion-item (click)="goToRestaurantesPage(2)">
+    <button ion-item (click)="goToRestaurantesPage(2,iduser)">
       <ion-icon name="restaurant" item-left></ion-icon>
         Comida
     </button>
-    <button ion-item (click)="goToRestaurantesPage(3)">
+    <button ion-item (click)="goToRestaurantesPage(3,iduser)">
       <ion-icon name="restaurant" item-left></ion-icon>
      	  Cena
     </button>
-    <button ion-item (click)="goToRestaurantesPage(4)">
+    <button ion-item (click)="goToRestaurantesPage(4,iduser)">
       <ion-icon name="restaurant" item-left></ion-icon>
        Todas las opciones
     </button>
