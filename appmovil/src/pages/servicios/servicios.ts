@@ -4,13 +4,6 @@ import { Menu } from '../menu/menu';
 import { Ubicacion } from '../ubicacion/ubicacion';
 import { Reservacion } from '../reservacion/reservacion';
 import { ServicesServicios } from '../../providers/servicios.service';
-/**
- * Generated class for the Servicios page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-//@IonicPage()
 @Component({
   selector: 'page-servicios',
   templateUrl: 'servicios.html',
@@ -18,8 +11,10 @@ import { ServicesServicios } from '../../providers/servicios.service';
 export class Servicios {
   servicios:Array<any>;
   inforest;
+  iduser;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
     this.inforest=navParams.data.inforest;
+    this.iduser = navParams.data.iduser;
   }
   ionViewDidLoad() {
    this.data.servicios(this.inforest.idrestaurante).subscribe(
@@ -34,13 +29,13 @@ export class Servicios {
        () => console.log('Movie Search Complete')
        );
   }
-  goToMenuPage(){
-  	this.navCtrl.push(Menu);
+  goToMenuPage(inforest){
+  	this.navCtrl.push(Menu,{inforest:inforest});
   }
   goToUbicacionPage(){
   	this.navCtrl.push(Ubicacion);
   }
-  goToReservacionPage(){
-    this.navCtrl.push(Reservacion);
+  goToReservacionPage(inforest,iduser){
+    this.navCtrl.push(Reservacion,{inforest:inforest,iduser:iduser});
   }
 }

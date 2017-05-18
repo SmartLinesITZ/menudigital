@@ -8,12 +8,14 @@ import { Restaurantes } from '../restaurantes/restaurantes';
 })
 export class Opciones {
   respuesta: Array<any>;
+  iduser;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+     this.iduser = navParams.data.user;  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Opciones');
   }
- goToRestaurantesPage(opcion:number){
-  	this.navCtrl.push(Restaurantes,{opcion:opcion});
+ goToRestaurantesPage(opcion:number, iduser:number){
+  	this.navCtrl.push(Restaurantes,{opcion:opcion, iduser:iduser});
   }
 }

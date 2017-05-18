@@ -11,45 +11,47 @@ import { AlertController } from 'ionic-angular';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-//@IonicPage()
-@Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
-})
-export class Login {
-  respuesta: Array<any>;
+ //@IonicPage()
+ @Component({
+   selector: 'page-login',
+   templateUrl: 'login.html',
+ })
+ export class Login {
+   respuesta: Array<any>;
    login: {username?: string, password?: string} = {};
-  submitted = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public data: ServicesUsuarios, public alertCtrl: AlertController) {
-  }
+   submitted = false;
+   user;
+   constructor(public navCtrl: NavController, public navParams: NavParams, public data: ServicesUsuarios, public alertCtrl: AlertController) {
+   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
-  }
-  goToOpcionesPage(){
-  	this.navCtrl.push(Opciones);
-  }
-  goToRegistroPage(){
-  	this.navCtrl.push(Registro);
-  }
-  public compruebaAcceso(usuario: string, password:string)
+   ionViewDidLoad() {
+     console.log('ionViewDidLoad Login');
+   }
+   goToOpcionesPage(){
+     this.navCtrl.push(Opciones);
+   }
+   goToRegistroPage(){
+     this.navCtrl.push(Registro);
+   }
+   public compruebaAcceso(usuario: string, password:string)
    {
      //this.presentLoading();
      this.data.consultaUsuario(usuario,password).subscribe(
        data => {
-         this.respuesta=data;
+         this.respuesta = data;
          //console.log(data);
          if(this.respuesta[0].mensaje == "1")
          {
            let alert = this.alertCtrl.create({
-             title: 'Acceso correcto',
-             subTitle: '¡Bienvenido?',
+             title: 'Bienvenido '+this.respuesta[0].username,
+             subTitle: 'Disfruta de la aplicación',
              buttons: ['OK']
            });
            alert.present();
-           this.navCtrl.push(Opciones);
+            this.navCtrl.push(Opciones,{user:this.respuesta[0].idusuario});
+       
          }else{
-            let alert = this.alertCtrl.create({
+           let alert = this.alertCtrl.create({
              title: 'Acceso incorrecto',
              subTitle: 'Intentalo otra vez',
              buttons: ['OK']
@@ -58,9 +60,14 @@ export class Login {
          }
        },
        err => {
-         console.log(err);
+         let alert = this.alertCtrl.create({
+             title: 'Valio berta',
+             subTitle: err,
+             buttons: ['OK']
+           });
+           alert.present();
        },
        () => console.log('Movie Search Complete')
        );
    }
-}
+ }

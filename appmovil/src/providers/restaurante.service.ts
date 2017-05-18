@@ -19,4 +19,14 @@ export class ServicesRestaurante {
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
+  getcategorias(idrest) {
+    var url = 'http://smartlines.hol.es/interactividad/menu/categoria.php?idrest='+idrest ;
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }
+  getplatillos(idcategoria,idrest) {
+    var url = 'http://smartlines.hol.es/interactividad/menu/categoria.php?idcategoria='+idcategoria+'&idrestaurante'+idrest ;
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }
 }

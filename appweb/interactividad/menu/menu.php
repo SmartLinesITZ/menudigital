@@ -1,22 +1,34 @@
 <?php
-  include "../conn/conexion.php";
-  $objConex = new Conexion();
-  $idrest=$_REQUEST['idrest'];
-  $link=$objConex->conectarse();
-  selectPlatillos($idrest,$link);
-  function selectPlatillos($idrest,$link){
-    $response = array();
-  $query = mysql_query("SELECT * FROM platillo   WHERE  idrestaurante = $idrest", $link)or die(mysql_error());
-  if (!$query){
+include "../conn/conexion.php";
+$objConex = new Conexion();
+$idrestaurante=$_REQUEST['idrest'];
+$link=$objConex->conectarse();
+selectPlatillos($idrestaurante,$link);
+function selectPlatillos($idrestaurante,$link){
+  $querycat = mysql_query("SELECT * FROM categoria WHERE
+    categoria.idrestaurante=$idrestaurante", $link);
+  if (!$querycat){
     $row_array['mensaje']  = 'fail';
   }else{
     $response = array();
-      while($rows = mysql_fetch_array($query)){
-        $row_array['categoria']  = utf8_decode($rows['categoria']);
-          array_push ($response, $row_array);
+    while($rows = mysql_fetch_array($querycat)){
+      $categoria=$rows['idcategoria'];
+      $row_array['nomcategoria']  = $rows['nomcategoria'];
+      array_push ($response, $row_array);
+      $queryplat = mysql_query("SELECT * FROM platillo,categoria WHERE
+        platillo.idcategoria = categoria.idcategoria AND categoria.idcategoria=$categoria", $link)or die(mysql_error());
+      $response2=array();
+      while($rows2 = mysql_fetch_array($queryplat)){
+        $row_array2['nombreplatillo']  = $rows2['nombreplatillo'];
+        $row_array2['imagen']  = $rows2['imagen'];
+        $row_array2['precio']  = $rows2['precio'];
+        $row_array2['descripcion']  = $rows2['descripcion'];
+        array_push ($response2, $row_array2);
       }
-      echo $json_string = json_encode($response);
-      mysql_close();
+      array_push ($response, $response2);
     }
+    echo $json_string = json_encode($response);
+    mysql_close();
   }
+}
 ?>

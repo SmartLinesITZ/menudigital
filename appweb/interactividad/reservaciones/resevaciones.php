@@ -20,7 +20,7 @@ echo "fail";
         $row_array['nombrerest']  = utf8_decode($rows['nombrerest']);
         $row_array['nopersonas']  = utf8_decode($rows['nopersonas']);
         $row_array['horallegada']  = utf8_decode($rows['horallegada']);
-        array_push ($response, $row_array);
+        array_push($response, $row_array);
 
 
       }
