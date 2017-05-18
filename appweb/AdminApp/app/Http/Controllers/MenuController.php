@@ -23,8 +23,8 @@ class MenuController extends Controller
     {
         $query=trim($request->get('searchText'));
         $platillos=DB::table('platillo as p')
-        ->join('restaurante as r', 'p.idrestaurante',"=","r.idrestaurante")
-        ->select('p.idplatillo','p.nombreplatillo','p.imagen','p.categoria','p.precio','p.descripcion')
+        ->join('restaurante as r', 'p.idplatillo',"=","r.idrestaurante")
+        ->select('p.idplatillo','p.nombreplatillo','p.imagen','p.precio','p.descripcion')
         ->where('p.nombreplatillo','LIKE','%'.$query.'%')
         ->orderBy('p.idplatillo','desc')
         ->paginate(4);

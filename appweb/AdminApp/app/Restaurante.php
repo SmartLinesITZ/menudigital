@@ -13,9 +13,7 @@ class Restaurante extends Model
     public $timestamps=false;//Laravel automaticamente te genera dos tabla el false es para que no las genere
 
     protected $fillable =[
-    	'nombrerest',
-        'idrestaurante',
-        
+        'nombrerest',
     	'descripcion',
     	'domicilio',
     	'telefono',

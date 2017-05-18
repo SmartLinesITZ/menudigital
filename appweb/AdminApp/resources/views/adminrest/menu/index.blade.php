@@ -9,44 +9,42 @@
 	@include('adminrest.menu.search')
 </div>
 <div class="row">
-	<dir class="col s12 m6">
+	<div class="col s12 m12 l12">
 		<table class="centered responsive-table highlight">
 			<thead>
 				<tr>
-					<td>Platillo</td>
-					<td>Precio</td>
-					<td>Categoria</td>
-					<td>Descripcion</td>
+					<th>Platillo</th>
+					<th>Imagen</th>
+					<th>Descripción</th>
+					<th>Precio</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach ($platillos as $p)
 				<tr>
 					<td>{{ $p->nombreplatillo}}</td>
+					<td><img src="{{ $p->imagen}}" alt="Imagen" width="120px" height="120px"/></td>
+					<td>{{ $p->descripcion}}</td>
 					<td>${{ $p->precio}}</td>
-					<td>{{ $p->categoria}}</td>
-					<td width="550">{{ $p->descripcion}}</td>
 					<td>
-						<a class="btn-floating waves-effect waves-light blue"><i class="material-icons">edit</i></a>
-						<a class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a>
+						<a href="#" class="btn-floating waves-effect waves-light blue"><i class="material-icons">edit</i></a>
+						<a href="#modal1" class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a>
+						<div id="modal1" class="modal">
+					    <div class="modal-content">
+					      <h4>Confirmar Eliminación</h4>
+					      <p>¿Realmente deseas eliminar este platillo?</p>
+					    </div>
+					    <div class="modal-footer">
+					    	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Si, eliminalo</a>
+	                       	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No, gracias</a>
+					    </div>
+					  </div>
 					</td>
 				</tr>
 				@endforeach
 			</tbody>
 		</table>
-	</dir>
-</div>
-<div class="row">
-	<div class="col s12 m6">
-		<ul class="pagination center">
-		    <li class="disabled amber lighten-4"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-		    <li class="active amber lighten-1 z-depth-2"><a href="#!">1</a></li>
-		    <li class="waves-effect waves-yellow"><a href="#!">2</a></li>
-		    <li class="waves-effect waves-yellow"><a href="#!">3</a></li>
-		    <li class="waves-effect waves-yellow"><a href="#!">4</a></li>
-		    <li class="waves-effect waves-yellow"><a href="#!">5</a></li>
-		    <li class="waves-effect waves-yellow"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-		</ul>
+		{!! $platillos->render() !!}
 	</div>
 </div>
 <div class="floating">
