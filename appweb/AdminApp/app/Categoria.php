@@ -10,12 +10,12 @@ class Categoria extends Model
 
     protected $primaryKey="idcategoria";
 
-    public $timetamps=false;//Laravel automaticamente te genera dos tabla el false es para que no las genere
+    public $timestamps=false;//Laravel automaticamente te genera dos tabla el false es para que no las genere
 
     protected $fillable =[
-    	'idplatillo',
     	'nomcategoria',
-    	'descripcion'
+    	'descripcion',
+        'idrestaurante'
     ];
 
     protected $guarded =[
