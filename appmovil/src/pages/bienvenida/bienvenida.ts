@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { Opciones } from '../opciones/opciones';
 /**
  * Generated class for the Bienvenida page.
  *
@@ -21,5 +21,7 @@ export class Bienvenida {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Bienvenida');
   }
-
+  startApp(user){
+  	this.navCtrl.push(Opciones,{user:user});
+  }
 }

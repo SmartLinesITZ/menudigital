@@ -5,14 +5,45 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>solicitudes</ion-title>
-  </ion-navbar>
-
+	<ion-navbar color="primary">
+		<ion-title>Solicitudes pendientes</ion-title>
+	</ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
-
+	<ion-card padding>
+		<ion-item>
+			<h1>Pedido anticipado</h1>
+		</ion-item>
+		<ion-item>
+			<h2>Restaurante: <b>Lucky Luciano</b></h2>
+		</ion-item>
+		<button ion-button block color="primary" (click)="verServicio(Servicio1)">Ver</button>
+		<button ion-button clear color="white" align="right">
+			<ion-label color="primary">Cancelar</ion-label>
+		</button>
+	</ion-card>
+	<ion-card padding>
+		<ion-item>
+			<h1>Pedido domilio</h1>
+		</ion-item>
+		<ion-item>
+			<h2>Restaurante: <b>Lucky Luciano</b></h2>
+		</ion-item>
+		<button ion-button block color="primary" (click)="verServicio(Servicio3)">Ver</button>
+		<button ion-button clear color="white" align="right">
+			<ion-label color="primary">Cancelar</ion-label>
+		</button>
+	</ion-card>
+	<ion-card padding>
+		<ion-item>
+			<h1>Reservación</h1>
+		</ion-item>
+		<ion-item>
+			<h2>Restaurante: <b>Lucky Luciano</b></h2>
+		</ion-item>
+		<button ion-button block color="primary" (click)="verServicio(Servicio2)">Ver</button>
+		<button ion-button clear color="white" align="right">
+			<ion-label color="primary">Cancelar</ion-label>
+		</button>
+	</ion-card>
 </ion-content>

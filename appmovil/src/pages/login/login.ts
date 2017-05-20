@@ -59,8 +59,8 @@ import { AlertController } from 'ionic-angular';
        },
        err => {
          let alert = this.alertCtrl.create({
-             title: 'Valio berta',
-             subTitle: err,
+             title: 'Algo salio mal',
+             subTitle: 'Verifica que tengas internet e intentalo otra vez',
              buttons: ['OK']
            });
            alert.present();
