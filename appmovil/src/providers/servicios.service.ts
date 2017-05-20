@@ -6,29 +6,37 @@ export class ServicesServicios {
   //BaseUrl: string="https://api.github.com";
   //username: string="codigofacilito";
   constructor(private http: Http) { }
- /* getRest(){
+  /* getRest(){
   	return this.http.get("http://localhost:8000/api/restaurante");
   }*/
-   servicios(idrest) {
+  servicios(idrest) {
     var url = 'http://smartlines.hol.es/interactividad/servicios/servicios.php?idrest='+idrest;
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
-
-   domicilio(idrest) {
+  domicilio(idrest) {
     var url = 'http://smartlines.hol.es/interactividad/servicios/servicios.php?idrest='+idrest;
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
-   anticipado(idrest) {
+  anticipado(idrest) {
     var url = 'http://smartlines.hol.es/interactividad/servicios/servicios.php?idrest='+idrest;
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
-   reservacion(nopersonas,time,idrest,iduser) {
+  reservacion(nopersonas,time,idrest,iduser) {
     var url = 'http://smartlines.hol.es/interactividad/reservaciones/create.php?idrest='+idrest+'&iduser='+iduser+'&nopersonas='+nopersonas+'&horallegada='+time;
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
-  
+  generaPedido(idrest,iduser) {
+    var url = 'http://smartlines.hol.es/interactividad/pedidos/create.php?idrest='+idrest+'&iduser='+iduser;
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }
+  orden(idpedido,idplatillo) {
+    var url = 'http://smartlines.hol.es/interactividad/orden/create.php?idpedido='+idpedido+'&idplatillo='+idplatillo;
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }  
 }

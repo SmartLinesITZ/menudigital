@@ -5,6 +5,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
+
 import { HomePage } from '../pages/home/home';
 import { Menu } from '../pages/menu/menu';
 import { Users } from '../pages/users/users';
@@ -22,8 +24,10 @@ import { Panticipado } from '../pages/panticipado/panticipado';
 import { Reservacion } from '../pages/reservacion/reservacion';
 import { Tabs } from '../pages/tabs/tabs';
 import { About } from '../pages/about/about';
-import { Solicitudes } from '../pages/solicitudes/solicitudes';
 import { Pruebajson } from '../pages/pruebajson/pruebajson';
+import { Bienvenida } from '../pages/bienvenida/bienvenida';
+import { Solicitudes } from '../pages/solicitudes/solicitudes';
+
 
 //import { GeolocationService } from '../services/geolocation.service';
 //import { Geolocation } from '@ionic-native/geolocation';
@@ -53,12 +57,14 @@ import { ServicesServicios } from '../providers/servicios.service';
     Tabs,
     About,
     Solicitudes,
-    Pruebajson
+    Pruebajson,
+    Bienvenida
   ],
   imports: [
    HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,7 +87,8 @@ import { ServicesServicios } from '../providers/servicios.service';
     Tabs,
     About,
     Solicitudes,
-    Pruebajson
+    Pruebajson,
+    Bienvenida
   ],
   providers: [
     ServicesUsuarios,

@@ -5,48 +5,40 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Registro</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Registro de usuario</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-<ion-content>
+<ion-content padding>
   <ion-list>
-
+    <ion-item>
+      <h2>Ingresa tus datos:</h2>
+    </ion-item>
     <ion-item>
       <ion-label floating color="primary">Nombre</ion-label>
-      <ion-input type="text" #nombre></ion-input>
+      <ion-input requred type="text" #nombre></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label floating color="primary">Correo Electronico</ion-label>
+      <ion-label floating color="primary">Correo Electrónico</ion-label>
       <ion-input type="text" #correo></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label floating color="primary">Telefono</ion-label>
+      <ion-label floating color="primary">Teléfono</ion-label>
       <ion-input type="text" #telefono></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label floating color="primary">Usuario</ion-label>
       <ion-input type="text" #usuario></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label floating color="primary">Contraseña</ion-label>
       <ion-input type="password" #password></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label floating color="primary">Confirmar contraseña</ion-label>
       <ion-input type="password" #password2></ion-input>
     </ion-item>
     <br><br>
-    <button ion-button block color="primary" (click)="Insert(nombre.value,correo.value,telefono.value,usuario.value,password.value)">Submit</button>
-
+    <button ion-button block color="primary" (click)="Insert(nombre.value,correo.value,telefono.value,usuario.value,password.value)">Enviar</button>
   </ion-list>
-
 </ion-content>

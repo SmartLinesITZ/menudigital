@@ -11,12 +11,16 @@ export class Menu {
   categorias: Array<any>;
   platillos: Array<any>;
   inforest;
+  iduser;
+  pedido;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesRestaurante) {
     this.inforest = navParams.data.inforest;
+    this.iduser = navParams.data.iduser;
+    this.pedido = navParams.data.pedido;
   }
   ionViewDidLoad() 
   {
-    this.data.getcategorias(this.inforest.idrestaurante).subscribe(
+    this.data.getMenu(this.inforest.idrestaurante).subscribe(
       data => {
         this.categorias = data; //duda
         console.log(data);
@@ -27,20 +31,9 @@ export class Menu {
       () => console.log('Movie Search Complete')
       );
   }
-  /*getplatillos(){
-    this.data.getplatillos(this.inforest.idrestaurante).subscribe(
-      data => {
-        this.platillos = data; //duda
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      },
-      () => console.log('Movie Search Complete')
-      );
-  }*/
-  goToIngredientesPage(){
-    this.navCtrl.push(Ingredientes);
+  goToIngredientesPage(platillo,pedido,iduser,inforest){
+    
+    this.navCtrl.push(Ingredientes,{platillo:platillo, pedido:pedido, iduser:iduser, inforest:inforest});
   }
   goToOrdenPage(){
     this.navCtrl.push( Orden );

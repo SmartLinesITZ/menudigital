@@ -12,12 +12,10 @@
     <ion-title>Iniciar sesión</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding class="ion-content" color="primary">
 	<div class="logo">
     <img src="assets/icon/logo.png" alt="Ionic logo">
   </div>
-
   <ion-item class="ion-item">
     <ion-label color="primary" floating>User:</ion-label>
     <ion-input type="text"  color="wite" class="ion-input" #usuario></ion-input>
@@ -25,11 +23,13 @@
   <ion-item class="ion-item">
     <ion-label color="primary" floating>Password:</ion-label>
     <ion-input type="password"  class="ion-input" #password></ion-input>
-  </ion-item>
-  <button ion-button full clear color="primary" (click)="compruebaAcceso(usuario.value,password.value)">Acceder</button>
-  <button ion-button clear full color="primary" (click)="goToRegistroPage()">¿No estás registrado?</button> <br>
-  <button ion-button full icon-right color="white" (click)="goToOpcionesPage()">
+  </ion-item><br><br>
+  <button ion-button block color="primary" (click)="compruebaAcceso(usuario.value,password.value)">Acceder</button><br>
+  <button ion-button clear full color="white" (click)="goToRegistroPage()">
+   <ion-label color="primary">¿No estás registrado?</ion-label>
+ </button> <br>
+  <!--button ion-button full icon-right color="white" (click)="goToOpcionesPage()">
     Iniciar con facebook
     <ion-icon name="logo-facebook"></ion-icon>
-  </button>
+  </button-->
 </ion-content>

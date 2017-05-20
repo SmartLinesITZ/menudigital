@@ -1,0 +1,24 @@
+<!--
+  Generated template for the Bienvenida page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+<ion-content padding>
+	<div class="logo">
+		<img src="assets/icon/logo.png"  alt="Ionic logo">
+	</div>
+	<h1 class="slide-title" align="center">Bienvenido {{user.username}}</h1>
+	<h2 class="slide-title" align="center">¿Estas listo para la experiencia?</h2>
+	<div class="row">
+		<div class="col s6">
+			<button class="comenzar" ion-button icon-right large clear align="right" (click)="startApp()">
+				Comenzar
+				<ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		</div>
+	</div>
+</ion-content>

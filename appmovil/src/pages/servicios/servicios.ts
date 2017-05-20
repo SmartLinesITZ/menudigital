@@ -10,6 +10,7 @@ import { ServicesServicios } from '../../providers/servicios.service';
 })
 export class Servicios {
   servicios:Array<any>;
+  pedido:Array<any>;
   inforest;
   iduser;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
@@ -29,13 +30,23 @@ export class Servicios {
        () => console.log('Movie Search Complete')
        );
   }
-  goToMenuPage(inforest){
-  	this.navCtrl.push(Menu,{inforest:inforest});
+  goToMenuPage(inforest,iduser){
+    this.data.generaPedido(this.inforest.idrestaurante,iduser).subscribe(
+       data => {
+         this.pedido = data;
+         this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedido[0]});
+       },
+       err => {
+         console.log(err);
+       },
+       () => console.log('Movie Search Complete')
+       );
+ 
   }
   goToUbicacionPage(){
   	this.navCtrl.push(Ubicacion);
   }
-  goToReservacionPage(inforest,iduser){
-    this.navCtrl.push(Reservacion,{inforest:inforest,iduser:iduser});
+  goToReservacionPage(inforest,iduser,pedido){
+    this.navCtrl.push(Reservacion,{inforest:inforest,iduser:iduser,pedido:pedido});
   }
 }

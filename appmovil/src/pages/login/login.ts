@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Registro } from '../registro/registro';
-import { Opciones } from '../opciones/opciones';
+import { Bienvenida } from '../bienvenida/bienvenida';
 import { ServicesUsuarios } from '../../providers/usuarios.service';
 import { AlertController } from 'ionic-angular';
 //import { NgForm } from '@angular/forms';
@@ -27,9 +27,7 @@ import { AlertController } from 'ionic-angular';
    ionViewDidLoad() {
      console.log('ionViewDidLoad Login');
    }
-   goToOpcionesPage(){
-     this.navCtrl.push(Opciones);
-   }
+ 
    goToRegistroPage(){
      this.navCtrl.push(Registro);
    }
@@ -42,13 +40,13 @@ import { AlertController } from 'ionic-angular';
          //console.log(data);
          if(this.respuesta[0].mensaje == "1")
          {
-           let alert = this.alertCtrl.create({
+           /*let alert = this.alertCtrl.create({
              title: 'Bienvenido '+this.respuesta[0].username,
              subTitle: 'Disfruta de la aplicación',
              buttons: ['OK']
            });
-           alert.present();
-            this.navCtrl.push(Opciones,{user:this.respuesta[0].idusuario});
+           alert.present();*/
+            this.navCtrl.push(Bienvenida,{user:this.respuesta[0]});
        
          }else{
            let alert = this.alertCtrl.create({

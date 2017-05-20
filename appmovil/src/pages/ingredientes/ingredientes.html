@@ -7,16 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Menú digital</ion-title>
+    <ion-title>{{inforest.nombrerest}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-<h1>Army Chicken a la Parrilla</h1>
-<hr>
-<h2>Ingredientes:</h2>
+  <h1>{{platillo.nombreplatillo}}</h1>
+  <hr>
+  <div class="logo">
+  <img src="{{platillo.imagen}}" alt="Ionic logo">
+  </div>
+  <p> {{platillo.descripcion}} </p>
+  {{pedido.idpedido}}
+  {{platillo.idplatillo}}
+<!--h2>Ingredientes:</h2>
 <hr>
 <ion-item>
   <ion-label>Pechuga de pollo al grill</ion-label>
@@ -41,8 +45,8 @@
 <ion-item>
   <ion-label>Queso blanco</ion-label>
   <ion-checkbox color="dark" checked="true"></ion-checkbox>
-</ion-item>
+</ion-item-->
 <ion-fab bottom right >
-    <button ion-fab (click)="goToMenuPage()" color="secondary"><ion-icon name="checkmark"></ion-icon></button>   
-  </ion-fab>
+  <button ion-fab (click)="goToMenuPage(inforest,iduser,pedido.idpedido,platillo.idplatillo)" color="secondary"><ion-icon name="checkmark"></ion-icon></button>   
+</ion-fab>
 </ion-content>
