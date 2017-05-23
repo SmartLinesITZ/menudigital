@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Menu } from '../menu/menu';
 import { ServicesServicios } from '../../providers/servicios.service';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the Ingredientes page.
  *
@@ -20,7 +21,7 @@ import { ServicesServicios } from '../../providers/servicios.service';
    pedido;
    inforest;
    mensaje;
-   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
+   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios,public alertCtrl: AlertController) {
      this.platillo=navParams.data.platillo;
      this.iduser = navParams.data.iduser;
      this.pedido = navParams.data.pedido;
@@ -33,14 +34,18 @@ import { ServicesServicios } from '../../providers/servicios.service';
      this.data.orden(idpedido,idplatillo).subscribe(
       data => {
         this.pedidor = data; //duda
-        console.log(data);
+        this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedidor[0]});
       },
       err => {
-        console.log(err);
+        let alert = this.alertCtrl.create({
+             title: 'Algo salio mal',
+             buttons: ['OK']
+           });
+           alert.present();
       },
       () => console.log('Movie Search Complete')
       );
-     this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedidor[0]});
+     
    }
 
  }

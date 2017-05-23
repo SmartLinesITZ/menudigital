@@ -29,7 +29,7 @@
       {{ categoria.nomcategoria }}
     </ion-label>
   </ion-item>
-  <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,user,inforest)">
+  <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,iduser,inforest)">
     <ion-avatar item-left>
       <img src="{{platillo.imagen}}">
     </ion-avatar>
