@@ -23,18 +23,20 @@
 		<div class="col s10 offset-s1 card-panel">
 			<div class="row">
 				<div class="col s6">
-					<label>Cetgorira</label>
-					<select class="browser-default" name="categoria">
-						<option value="" disabled selected>Entra</option>
-						<option value="1">Ensalada</option>
-						<option value="2">Botana</option>
-						<option value="3">Platillo fuerte</option>
+					<label>Categoria</label>
+					<select class="browser-default" name="idcategoria">
+						@foreach($categorias as $cat)
+		     	  	 	<option value="{{$cat->idcategoria}}">
+		     	  	 		{{$cat->nomcategoria}}
+		     	  	 	</option>
+		     	  	 	@endforeach
 					</select>
 				</div>
+				<!--
 				<div class="input-field col s6">
 					<input id="last_name" type="text" name="categoria" value="{{old('categoria')}}"" class="validate">
 					<label for="last_name">Agregar Categoria</label>
-				</div>
+				</div>-->
 			</div>
 
 			<div class="row">

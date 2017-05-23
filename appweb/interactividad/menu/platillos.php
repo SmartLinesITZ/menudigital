@@ -2,13 +2,13 @@
   include "../conn/conexion.php";
   $objConex = new Conexion();
   $idcategoria=$_REQUEST['idcategoria'];
-  $idrestaurante=$_REQUEST['idrestaurante'];
+  $idrest=$_REQUEST['idrest'];
   $link=$objConex->conectarse();
-  selectPlatillos($idcategoria,$idrestaurante,$link);
-  function selectPlatillos($idcategoria,$idrestaurante,$link){
+  selectPlatillos($idcategoria,$idrest,$link);
+  function selectPlatillos($idcategoria,$idrest,$link){
     $response = array();
   $query = mysql_query("SELECT * FROM platillo,categoria
-    WHERE  platillo.idcategoria= $idcategoria AND idrestaurante = $idrest AND platillo.idcategoria = categoria.idcategoria AND idrestaurante=$idrestaurante", $link)or die(mysql_error());
+    WHERE  platillo.idcategoria= $idcategoria AND idrestaurante = $idrest AND platillo.idcategoria = categoria.idcategoria", $link)or die(mysql_error());
   if (!$query){
     $row_array['mensaje']  = 'fail';
   }else{
