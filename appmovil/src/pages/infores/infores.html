@@ -18,8 +18,11 @@
     <ion-icon name="pin"></ion-icon>
     Ubicación
   </button>
-  <ion-fab bottom right>
+  <ion-fab center bottom>
   <!--button ion-fab (click)="goToServiciosPage(inforest)"><ion-icon name="exit"></ion-icon></button-->   
-  <button ion-fab (click)="goToServiciosPage(inforest,iduser)"><ion-icon name="exit"></ion-icon></button>   
+  <button class="servicios" color="dark" ion-button small icon-right (click)="goToServiciosPage(inforest,user)">
+        Ver servicios disponibles
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
   </ion-fab>
 </ion-content>

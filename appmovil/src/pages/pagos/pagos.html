@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="paypal">
   	<ion-title>
    		Wings Army
    	</ion-title>
@@ -21,13 +21,13 @@
 <h4>Pagar con mi cuenta PayPal</h4>
 <p>Inicie sesión en su cuenta para pagar.</p>
 <ion-item>
-    <ion-label color="primary" stacked>Correo electronico</ion-label>
+    <ion-label color="paypal" stacked>Correo electrónico</ion-label>
     <ion-input type="email" ></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="primary" stacked>Contraseña de PayPal</ion-label>
+    <ion-label color="paypal" stacked>Contraseña de PayPal</ion-label>
     <ion-input type="password" ></ion-input>
   </ion-item><br>
-  <button ion-button full (click)="goToLoginPage()">Acceder</button>
+  <button ion-button full color="paypal" (click)="goToLoginPage()">Acceder</button>
 </ion-content>

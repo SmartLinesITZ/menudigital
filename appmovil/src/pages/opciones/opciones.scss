@@ -1,12 +1,38 @@
 page-opciones {
- .logo {
+.card-background-page {
+  .titulo{
+  background-color: #cc0000 !important;
+  }
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 3.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+}
+ .imagen {
     padding: 10px 0;
-    min-height: 200px;
+    min-height: 100px;
     text-align: center;
     margin-bottom: -40px;
 
-    img {
-      max-width: 150px;
+     img {
+      max-width: 120px;
     }
   }
   .btnregistrar{
@@ -21,4 +47,5 @@ page-opciones {
 .ion-content{
   background-color: #1C1D21 !important;
 }
+
 }

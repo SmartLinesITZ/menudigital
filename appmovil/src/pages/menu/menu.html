@@ -1,12 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
-  
     <ion-title>{{inforest.nombrerest}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-idpedido:{{pedido.idpedido}}<br>
-
 <!--div *ngFor="let categoria of categorias" class="animate-repeat-category">
    <ion-label color="primary">
     {{ categoria.nomcategoria }}
@@ -32,7 +29,7 @@ idpedido:{{pedido.idpedido}}<br>
       {{ categoria.nomcategoria }}
     </ion-label>
   </ion-item>
-  <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,iduser,inforest)">
+  <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,user,inforest)">
     <ion-avatar item-left>
       <img src="{{platillo.imagen}}">
     </ion-avatar>

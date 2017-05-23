@@ -12,10 +12,10 @@ export class Servicios {
   servicios:Array<any>;
   pedido:Array<any>;
   inforest;
-  iduser;
+  user;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
     this.inforest=navParams.data.inforest;
-    this.iduser = navParams.data.iduser;
+    this.user = navParams.data.user;
   }
   ionViewDidLoad() {
    this.data.servicios(this.inforest.idrestaurante).subscribe(
@@ -30,11 +30,11 @@ export class Servicios {
        () => console.log('Movie Search Complete')
        );
   }
-  goToMenuPage(inforest,iduser){
-    this.data.generaPedido(this.inforest.idrestaurante,iduser).subscribe(
+  goToMenuPage(inforest,user){
+    this.data.generaPedido(this.inforest.idrestaurante,user.idusuario).subscribe(
        data => {
          this.pedido = data;
-         this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedido[0]});
+         this.navCtrl.push(Menu,{inforest:inforest,user:user,pedido:this.pedido[0]});
        },
        err => {
          console.log(err);
@@ -43,10 +43,10 @@ export class Servicios {
        );
  
   }
-  goToUbicacionPage(){
-  	this.navCtrl.push(Ubicacion);
+  goToUbicacionPage(inforest,user){
+  	this.navCtrl.push(Ubicacion,{inforest:inforest,user:user});
   }
-  goToReservacionPage(inforest,iduser,pedido){
-    this.navCtrl.push(Reservacion,{inforest:inforest,iduser:iduser,pedido:pedido});
+  goToReservacionPage(inforest,user){
+    this.navCtrl.push(Reservacion,{inforest:inforest,user:user});
   }
 }

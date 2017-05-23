@@ -13,6 +13,10 @@
 <ion-content padding>
   <h1>Reservación</h1><br>
     <ion-list>
+    <ion-item>
+        <ion-label>A nombre de:</ion-label>
+        <ion-input type="text" #nomreservacion></ion-input>
+      </ion-item>
       <ion-item>
         <ion-label>No. Personas</ion-label>
         <ion-input type="number" #nopersonas></ion-input>
@@ -21,9 +25,13 @@
         <ion-label>Hora de llegada</ion-label>
         <ion-input type="time" #time></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-input type="date" #day></ion-input>
+      </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button full outline (click)="mandarSolicitud(nopersonas.value,time.value,inforest.idrestaurante,iduser)">Aceptar</button>
+      <button ion-button block color="primary" (click)="mandarSolicitud(nopersonas.value,time.value,inforest.idrestaurante,user.idusuario)">Enviar solicitud</button>
     </div>
 </ion-content>
 

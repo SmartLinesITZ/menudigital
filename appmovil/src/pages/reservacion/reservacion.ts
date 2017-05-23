@@ -17,10 +17,10 @@ import { AlertController } from 'ionic-angular';
  export class Reservacion {
    respuesta:Array<any>;
    inforest;
-   iduser;
+   user;
    constructor(public navCtrl: NavController, public navParams: NavParams,  public data: ServicesServicios, public alertCtrl: AlertController) {
      this.inforest=navParams.data.inforest;
-     this.iduser=navParams.data.iduser;
+     this.user=navParams.data.user;
    }
    ionViewDidLoad() {
      console.log('ionViewDidLoad Reservacion');

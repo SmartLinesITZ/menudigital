@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { HomePage } from '../pages/home/home';
 import { Menu } from '../pages/menu/menu';
@@ -29,12 +30,11 @@ import { Bienvenida } from '../pages/bienvenida/bienvenida';
 import { Solicitudes } from '../pages/solicitudes/solicitudes';
 
 
-//import { GeolocationService } from '../services/geolocation.service';
-//import { Geolocation } from '@ionic-native/geolocation';
 import { ServicePrueba } from '../providers/pruebaservicios.service';
 import { ServicesRestaurante } from '../providers/restaurante.service';
 import { ServicesUsuarios } from '../providers/usuarios.service';
 import { ServicesServicios } from '../providers/servicios.service';
+import { GeolocationService } from '../providers/geolocation.service';
 
 @NgModule({
   declarations: [
@@ -91,6 +91,8 @@ import { ServicesServicios } from '../providers/servicios.service';
     Bienvenida
   ],
   providers: [
+    Geolocation,
+    GeolocationService,
     ServicesUsuarios,
     ServicesRestaurante,
     ServicePrueba,

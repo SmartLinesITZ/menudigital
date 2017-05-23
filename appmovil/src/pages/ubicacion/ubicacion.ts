@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
-//import { GeolocationService } from '../../services/geolocation.service';
+import { GeolocationService } from '../../providers/geolocation.service';
 /**
  * Generated class for the Ubicacion page.
  *
@@ -14,11 +14,15 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'ubicacion.html',
 })
 export class Ubicacion {
+inforest;
+iduser;
 //map : GoogleMap=null;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocator:GeolocationService) {
+    this.inforest=navParams.data.inforest;
+    this.iduser = navParams.data.iduser;
   }
-/*, public geolocator:GeolocationService
-  ionViewDidLoad() {
+
+/*  ionViewDidLoad() {
     console.log('ionViewDidLoad Ubicacion');
     //Obtener ubicación del usuario para centrar ahí el mapa
     this.geolocator.get().then((result)=>{

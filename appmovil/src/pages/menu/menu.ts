@@ -11,11 +11,11 @@ export class Menu {
   categorias: Array<any>;
   platillos: Array<any>;
   inforest;
-  iduser;
+  user;
   pedido;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesRestaurante) {
     this.inforest = navParams.data.inforest;
-    this.iduser = navParams.data.iduser;
+    this.user = navParams.data.user;
     this.pedido = navParams.data.pedido;
   }
   ionViewDidLoad() 
@@ -31,9 +31,9 @@ export class Menu {
       () => console.log('Movie Search Complete')
       );
   }
-  goToIngredientesPage(platillo,pedido,iduser,inforest){
+  goToIngredientesPage(platillo,pedido,user,inforest){
     
-    this.navCtrl.push(Ingredientes,{platillo:platillo, pedido:pedido, iduser:iduser, inforest:inforest});
+    this.navCtrl.push(Ingredientes,{platillo:platillo, pedido:pedido, user:user, inforest:inforest});
   }
   goToOrdenPage(){
     this.navCtrl.push( Orden );
