@@ -19,34 +19,43 @@ class MenuController extends Controller
   }
   public function index(Request $request)
   {
-    if ($request)
+   
+      
+         if ($request)
     {
         $query=trim($request->get('searchText'));
         $platillos=DB::table('platillo as p')
-        ->join('restaurante as r', 'p.idplatillo',"=","r.idrestaurante")
-        ->select('p.idplatillo','p.nombreplatillo','p.imagen','p.precio','p.descripcion')
+        ->join('categoria as c', 'p.idcategoria',"=","c.idcategoria")
+        ->join('restaurante as r', 'c.idrestaurante',"=","r.idrestaurante")
+        ->select('p.idplatillo','p.nombreplatillo','p.imagen','c.nomcategoria','p.precio','p.descripcion')
         ->where('p.nombreplatillo','LIKE','%'.$query.'%')
         ->orderBy('p.idplatillo','desc')
-        ->paginate(4);
+        ->paginate(7);
         return view("adminrest.menu.index",["platillos"=>$platillos,"searchText"=>$query]);
         //return reponse()->json($request, 200);
+      
       }
 
   }
 
   public function create()
   {
-   return view("adminrest.menu.create");
+    //
+    //->join('restaurante as r', 'p.idplatillo',"=","r.idrestaurante")
+    $categorias=DB::table('categoria as c')->
+    join('restaurante as r', 'r.idrestaurante',"=","c.idrestaurante")
+    ->where('r.idrestaurante','=','1')->get();
+      return view("adminrest.menu.create",["categorias"=>$categorias]);
   }
 
 
   public function store(Menu $request)
   {
       $platillo=new Platillo;
-      $platillo->idrestaurante=1;
+      
       $platillo->nombreplatillo=$request->get('nombreplatillo');
       $platillo->precio=$request->get('precio');
-      $platillo->categoria=$request->get('categoria');
+      $platillo->idcategoria=$request->get('idcategoria');
       $platillo->descripcion=$request->get('descripcion');
       $platillo->save();
       return Redirect::to('adminrest/menu');
