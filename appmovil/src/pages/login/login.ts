@@ -33,8 +33,15 @@ import { AlertController } from 'ionic-angular';
    }
    public compruebaAcceso(usuario: string, password:string)
    {
-     //this.presentLoading();
-     this.data.consultaUsuario(usuario,password).subscribe(
+     if(usuario=="" || password==""){
+       let alert = this.alertCtrl.create({
+             title: 'Acceso incorrecto',
+             subTitle: 'Complementa los datos para continuar',
+             buttons: ['OK']
+           });
+           alert.present();
+     }else{
+        this.data.consultaUsuario(usuario,password).subscribe(
        data => {
          this.respuesta = data;
          //console.log(data);
@@ -67,5 +74,7 @@ import { AlertController } from 'ionic-angular';
        },
        () => console.log('Movie Search Complete')
        );
+     }
+    
    }
  }

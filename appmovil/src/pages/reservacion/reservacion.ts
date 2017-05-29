@@ -28,42 +28,51 @@ import { AlertController } from 'ionic-angular';
    goToServicios(){
      this.navCtrl.push(Servicios);
    }
-   public mandarSolicitud(nopersonas,time,idrest,iduser)
+   public mandarSolicitud(nombre,nopersonas,time,fecha,idrest,user,inforest)
    {
-     //this.presentLoading();
-     this.data.reservacion(nopersonas,time,idrest,iduser).subscribe(
-       data => {
-         this.respuesta=data;
-         //console.log(data);
-         if(this.respuesta[0].mensaje == "success")
-         {
-           let alert = this.alertCtrl.create({
-             title: 'Solicitud éxitosa',
-             subTitle: 'Tu reservación esta siendo atendida, en un momento te mandaremos un mensaje de confirmación',
-             buttons: ['OK']
-           });
-           alert.present();
-         }else if(this.respuesta[0].mensaje == "fail")
-         {
-           let alert = this.alertCtrl.create({
-             title: 'Error',
-             subTitle: 'Algo salio mal',
-             buttons: ['OK']
-           });
-           alert.present();
-         }else{
-           let alert = this.alertCtrl.create({
-             title: 'Error',
-             subTitle: 'Algo salio mal',
-             buttons: ['OK']
-           });
-           alert.present();
-         }
-       },
-       err => {
-         console.log(err);
-       },
-       () => console.log('Movie Search Complete')
-       );
+     if(nombre=="" || nopersonas=="" || time=="" || fecha==""){
+       let alert = this.alertCtrl.create({
+         title: 'Error',
+         subTitle: 'Completa todos los datos para continuar',
+         buttons: ['OK']
+       });
+       alert.present();
+     }else{
+       this.data.reservacion(nombre,nopersonas,time,fecha,idrest,user.idusuario).subscribe(
+         data => {
+           this.respuesta=data;
+           //console.log(data);
+           if(this.respuesta[0].mensaje == "success")
+           {
+             let alert = this.alertCtrl.create({
+               title: 'Solicitud éxitosa',
+               subTitle: 'Tu reservación esta siendo atendida, en un momento te mandaremos un mensaje de confirmación',
+               buttons: ['OK']
+             });
+             alert.present();
+             this.navCtrl.push(Servicios,{inforest:inforest,user:user});
+           }else if(this.respuesta[0].mensaje == "fail")
+           {
+             let alert = this.alertCtrl.create({
+               title: 'Error',
+               subTitle: 'Algo salio mal',
+               buttons: ['OK']
+             });
+             alert.present();
+           }else{
+             let alert = this.alertCtrl.create({
+               title: 'Error',
+               subTitle: 'Algo salio mal',
+               buttons: ['OK']
+             });
+             alert.present();
+           }
+         },
+         err => {
+           console.log(err);
+         },
+         () => console.log('Movie Search Complete')
+         );
+     }
    }
  }

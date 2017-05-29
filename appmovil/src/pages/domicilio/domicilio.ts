@@ -2,31 +2,23 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the Lists page.
+ * Generated class for the Domicilio page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 //@IonicPage()
 @Component({
-  selector: 'page-lists',
-  templateUrl: 'lists.html',
+  selector: 'page-domicilio',
+  templateUrl: 'domicilio.html',
 })
-export class Lists {
-lists:any []=[];
+export class Domicilio {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  	this.lists.push({
-  		name:'Wings'
-  	});
-  	this.lists.push({
-  		name:'Vancouber'
-  	});
-  	this.lists.push({
-  		name:'KFC'
-  	});
   }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Lists');
+    console.log('ionViewDidLoad Domicilio');
   }
 
 }

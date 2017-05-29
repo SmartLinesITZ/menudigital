@@ -1,9 +1,3 @@
-<!--
-  Generated template for the Reservacion page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>{{inforest.nombrerest}}</ion-title>
@@ -15,7 +9,7 @@
     <ion-list>
     <ion-item>
         <ion-label>A nombre de:</ion-label>
-        <ion-input type="text" #nomreservacion></ion-input>
+        <ion-input type="text" #nombrereservacion></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>No. Personas</ion-label>
@@ -31,7 +25,7 @@
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button block color="primary" (click)="mandarSolicitud(nopersonas.value,time.value,inforest.idrestaurante,user.idusuario)">Enviar solicitud</button>
+      <button ion-button block color="primary" (click)="mandarSolicitud(nombrereservacion.value,nopersonas.value,time.value,day.value,inforest.idrestaurante,user,inforest)">Enviar solicitud</button>
     </div>
 </ion-content>
 

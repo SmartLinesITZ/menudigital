@@ -16,25 +16,25 @@ import { AlertController } from 'ionic-angular';
  })
  export class Ingredientes {
    platillo;
-   iduser;
+   user;
    pedidor:Array<any>;
    pedido;
    inforest;
    mensaje;
    constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios,public alertCtrl: AlertController) {
      this.platillo=navParams.data.platillo;
-     this.iduser = navParams.data.iduser;
+     this.user = navParams.data.user;
      this.pedido = navParams.data.pedido;
      this.inforest = navParams.data.inforest;
    }
    ionViewDidLoad() {
      console.log('ionViewDidLoad Ingredientes');
    }
-   goToMenuPage(inforest,iduser,idpedido,idplatillo){
+   goToMenuPage(inforest,user,idpedido,idplatillo){
      this.data.orden(idpedido,idplatillo).subscribe(
       data => {
         this.pedidor = data; //duda
-        this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedidor[0]});
+        this.navCtrl.push(Menu,{inforest:inforest,user:user,pedido:this.pedidor[0]});
       },
       err => {
         let alert = this.alertCtrl.create({

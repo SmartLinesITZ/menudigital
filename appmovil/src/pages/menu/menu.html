@@ -1,60 +1,34 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>{{inforest.nombrerest}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="Refresh(pedido.idpedido)">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>
-<!--div *ngFor="let categoria of categorias" class="animate-repeat-category">
-   <ion-label color="primary">
-    {{ categoria.nomcategoria }}
-  </ion-label>
-  <div class="animate-repeat-category">
-    <ion-list *ngFor="let platillo of categoria.platillos">
+  <ion-list class="restaurantes">
+    <div *ngFor="let categoria of categorias">
       <ion-item>
-        <button ion-item (click)="goToIngredientesPage()">
-          <ion-avatar item-left>
-            <img src="{{platillo.imagen}}">
-          </ion-avatar>
-          <h3>{{platillo.nombreplatillo}}</h3>
-          <p>{{platillo.descripcion}}</p>
-        </button>
-      </ion-item>
-    </ion-list>
-  </div>
-</div><br><br-->
-<ion-list class="restaurantes">
-  <div *ngFor="let categoria of categorias">
-    <ion-item>
-     <ion-label color="primary">
-      {{ categoria.nomcategoria }}
-    </ion-label>
-  </ion-item>
-  <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,iduser,inforest)">
-    <ion-avatar item-left>
-      <img src="{{platillo.imagen}}">
-    </ion-avatar>
-    <h2 class="card-title">{{platillo.nombreplatillo}}</h2>
-    <p>{{platillo.descripcion}}</p>
-    <button ion-button outline item-right icon-left>
-      $ {{platillo.precio}}
-    </button>
-  </ion-item>      
-</div>
-</ion-list>
-    <!--ion-label color="primary" *ngFor="let categoria of categorias">
-      {{categoria.nomcategoria}}
-    </ion-label>
-    <ion-item *ngFor="let platillo of platillos">
-      <button ion-item (click)="goToIngredientesPage()">
-        <ion-avatar item-left>
-          <img src="{{inforest.logo}}">
-        </ion-avatar>
-        <h3>{{platillo.nombreplatillo}}</h3>
-        <p>{{platillo.descripcion}}</p>
+       <ion-label color="primary">
+        {{ categoria.nomcategoria }}
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let platillo of categoria.platillos" (click)="goToIngredientesPage(platillo,pedido,user,inforest)">
+      <ion-avatar item-left>
+        <img src="{{platillo.imagen}}">
+      </ion-avatar>
+      <h2 class="card-title">{{platillo.nombreplatillo}}</h2>
+      <p>{{platillo.descripcion}}</p>
+      <button ion-button outline item-right icon-left>
+        $ {{platillo.precio}}
       </button>
-      <button ion-button clear item-right>$ {{platillo.precio}}</button>
-    </ion-item-->
-    <ion-fab bottom right>
-     <button ion-fab (click)="goToOrdenPage()"><ion-icon name="basket">{{pedido.cantplatillos}}</ion-icon></button>
-   </ion-fab>
- </ion-content>
+    </ion-item>      
+  </div>
+</ion-list>
+<ion-fab bottom right>
+ <button ion-fab (click)="goToOrdenPage(pedido,user,inforest)"><ion-icon name="basket">{{pedido.cantplatillos}}</ion-icon></button>
+</ion-fab>
+</ion-content>

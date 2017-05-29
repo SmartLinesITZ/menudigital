@@ -25,10 +25,29 @@ import { AlertController } from 'ionic-angular';
    goToLoginPage(){
      this.navCtrl.push(Login);
    }
-   public Insert(nombre:string, correo:string, telefono:string, usuario: string, password:string)
+   public Insert(nombre:string, correo:string, telefono:string, usuario: string, password:string, password2:string)
    {
-     //this.presentLoading();
-     this.data.InsertUser(nombre,correo,telefono,usuario,password).subscribe(
+
+     if(nombre=="" || correo=="" || telefono == "" || usuario=="" || password=="" || password2==""){
+        let alert = this.alertCtrl.create({
+             title: 'Error al registrar',
+             subTitle: 'Complementa los datos para continuar',
+             buttons: ['OK']
+           });
+           alert.present();
+     }
+     else{
+
+       if(password != password2){
+          let alert = this.alertCtrl.create({
+             title: 'Error',
+             subTitle: 'Verifica que las contraseñas sean iguales',
+             buttons: ['OK']
+           });
+           alert.present();
+           }
+       else{
+          this.data.InsertUser(nombre,correo,telefono,usuario,password).subscribe(
        data => {
          this.respuesta=data;
          //console.log(data);
@@ -63,6 +82,11 @@ import { AlertController } from 'ionic-angular';
        },
        () => console.log('Movie Search Complete')
        );
+       }
+       
+     }
+     //this.presentLoading();
+     
    }
    exito(){
 

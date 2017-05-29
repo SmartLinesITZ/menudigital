@@ -11,37 +11,26 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <!--h3>Restaurantes disponibles...</h3-->
   <ion-list-header>
    <ion-label color="primary">
     Restaurantes disponibles
   </ion-label>
   <hr color="primary">
 </ion-list-header>
-
-  <!--ion-item-sliding  *ngFor="let restaurante of restaurantes">
-    <ion-card ion-item (click)="goToInforesPage(restaurante)">
-      <img src="{{restaurante.logo}}"/>
-      <button ion-item (click)="goToInforesPage(restaurante)">
-        <h2 align="center" class="card-title">{{restaurante.nombrerest}}</h2>
-        <h3 align="ceter" class="card-subtitle">{{restaurante.horarios}}</h3>
+<ion-list class="restaurantes">
+  <ion-item-sliding  color="primary" *ngFor="let restaurante of restaurantes">
+    <ion-item (click)="goToInforesPage(restaurante,user)">
+      <ion-avatar item-left>
+        <img src="{{restaurante.logo}}">
+      </ion-avatar>
+      <h2 class="card-title">{{restaurante.nombrerest}}</h2>
+      <p>{{restaurante.horarios}}</p>
+      <button ion-button outline item-right>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
       </button>
-    </ion-card>
-  </ion-item-sliding-->
-  <ion-list class="restaurantes">
-    <ion-item-sliding  color="primary" *ngFor="let restaurante of restaurantes">
-      <ion-item (click)="goToInforesPage(restaurante,user)">
-        <ion-avatar item-left>
-          <img src="{{restaurante.logo}}">
-        </ion-avatar>
-        <h2 class="card-title">{{restaurante.nombrerest}}</h2>
-        <p>{{restaurante.horarios}}</p>
-        <button ion-button outline item-right>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-        </button>
-      </ion-item>      
-    </ion-item-sliding>
-  </ion-list>
+    </ion-item>      
+  </ion-item-sliding>
+</ion-list>
 </ion-content>

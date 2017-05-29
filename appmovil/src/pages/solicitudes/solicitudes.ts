@@ -1,47 +1,119 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-/**
- * Generated class for the Solicitudes page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ServicesServicios } from '../../providers/servicios.service';
+import { Verpedido } from '../verpedido/verpedido';
  @Component({
  	selector: 'page-solicitudes',
  	templateUrl: 'solicitudes.html',
  })
  export class Solicitudes {
- 	Servicio1 : string = "1";
- 	Servicio2 : string = "2";
- 	Servicio3 : string = "Pedido a domicilio" ;
- 	constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
- 	}
- 	ionViewDidLoad() {
- 		console.log('ionViewDidLoad Solicitudes');
- 	}
- 	verServicio(servicio){
- 		if(servicio=="1"){
- 			let alert = this.alertCtrl.create({
-             title: 'Pedido anticipado',
-             subTitle: 'Disfruta de la aplicación',
+   pedidos: Array<any>;
+   reservaciones: Array<any>;
+   mensaje;
+   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public data: ServicesServicios) {
+   }
+   ionViewDidLoad() {
+     this.verPedidos();
+     this.verReservaciones();
+   }
+   verPedidos(){
+     this.data.readpedidos(2).subscribe(
+       data => {
+         this.pedidos = data;
+       },
+       err => {
+         let alert = this.alertCtrl.create({
+           title: 'Algo salio mal',
+           subTitle: 'Verifica que tengas internet y vuelve a intentarlo',
+           buttons: ['OK']
+         });
+         alert.present();
+       },
+       () => console.log('Movie Search Complete')
+       );
+   }
+   verReservaciones(){
+     this.data.readreservaciones(2).subscribe(
+       data => {
+         this.reservaciones = data;
+       },
+       err => {
+         let alert = this.alertCtrl.create({
+           title: 'Algo salio mal',
+           subTitle: 'Verifica que tengas internet y vuelve a intentarlo',
+           buttons: ['OK']
+         });
+         alert.present();
+       },
+       () => console.log('Movie Search Complete')
+       );
+   }
+   goToverPedidos(pedido){
+     this.navCtrl.push( Verpedido,{pedido:pedido} );
+   }
+   Refresh(){
+     this.verPedidos();
+     this.verReservaciones();
+   }
+   cancelarPedido(idPedido){
+     this.data.cancelarPedido(idPedido).subscribe(
+     data => {
+         this.mensaje = data;
+         if(this.mensaje[0].mensaje=="success"){
+           let alert = this.alertCtrl.create({
+             title: 'Se ha cancelado su pedido',
              buttons: ['OK']
            });
            alert.present();
- 		}else if(servicio=="2"){
- 			let alert = this.alertCtrl.create({
-             title: 'Reservación',
-             subTitle: 'Disfruta de la aplicación',
+           this.verPedidos();
+         }else{
+           let alert = this.alertCtrl.create({
+             title: 'No se ha podido cancelar su pedido',
              buttons: ['OK']
            });
            alert.present();
- 		}else{
- 			let alert = this.alertCtrl.create({
-             title: 'Pedido a domicilio',
-             subTitle: 'Disfruta de la aplicación',
+         }
+       },
+       err => {
+         let alert = this.alertCtrl.create({
+           title: 'Algo salio mal',
+           subTitle: 'Verifica que tengas internet y vuelve a intentarlo',
+           buttons: ['OK']
+         });
+         alert.present();
+       },
+       () => console.log('Movie Search Complete')
+       );
+   }
+   cancelarReservacion(idreservacion){
+     this.data.cancelarReservacion(idreservacion).subscribe(
+       data => {
+         this.mensaje = data;
+         if(this.mensaje[0].mensaje=="success"){
+           let alert = this.alertCtrl.create({
+             title: 'Se ha cancelado su reservación',
              buttons: ['OK']
            });
            alert.present();
- 		}
- 	}
-  }
+           this.verReservaciones();
+         }else{
+           let alert = this.alertCtrl.create({
+             title: 'No se ha podido cancelar su reservación',
+             buttons: ['OK']
+           });
+           alert.present();
+         }
+       },
+       err => {
+         let alert = this.alertCtrl.create({
+           title: 'Algo salio mal',
+           subTitle: 'Verifica que tengas internet y vuelve a intentarlo',
+           buttons: ['OK']
+         });
+         alert.present();
+       },
+       () => console.log('Movie Search Complete')
+       );
+   }
+ }

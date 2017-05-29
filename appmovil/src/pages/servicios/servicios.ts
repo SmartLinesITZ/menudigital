@@ -30,18 +30,17 @@ export class Servicios {
        () => console.log('Movie Search Complete')
        );
   }
-  goToMenuPage(inforest,iduser){
-    this.data.generaPedido(this.inforest.idrestaurante,iduser).subscribe(
+  goToMenuPage(inforest,user){
+    this.data.generaPedido(this.inforest.idrestaurante,user.idusuario).subscribe(
        data => {
          this.pedido = data;
-         this.navCtrl.push(Menu,{inforest:inforest,iduser:iduser,pedido:this.pedido[0]});
+         this.navCtrl.push(Menu,{inforest:inforest,user:user,pedido:this.pedido[0]});
        },
        err => {
          console.log(err);
        },
        () => console.log('Movie Search Complete')
        );
- 
   }
   goToUbicacionPage(inforest,user){
   	this.navCtrl.push(Ubicacion,{inforest:inforest,user:user});

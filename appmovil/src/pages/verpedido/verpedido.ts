@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Pagos } from '../pagos/pagos';
 import { ServicesServicios } from '../../providers/servicios.service';
 
+/**
+ * Generated class for the Verpedido page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+//@IonicPage()
 @Component({
-  selector: 'page-orden',
-  templateUrl: 'orden.html',
+  selector: 'page-verpedido',
+  templateUrl: 'verpedido.html',
 })
-export class Orden {
+export class Verpedido {
   orden: Array<any>;
   pedido;
-  user;
-  inforest;
   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
   this.pedido=navParams.data.pedido;
-  this.user=navParams.data.user;
-  this.inforest=navParams.data.inforest;
   }
   ionViewDidLoad(){
    this.data.dataorden(this.pedido.idpedido).subscribe(
@@ -29,9 +31,6 @@ export class Orden {
       () => console.log('Movie Search Complete')
       );
   }
-  goToPagosPage(pedido,user,inforest){
-  	this.navCtrl.push(Pagos,{pedido:pedido,user:user,inforest:inforest});
-  }
   eliminarArticulo(idplatillo,idpedido){
     this.data.eliminaarticulo(idplatillo,idpedido).subscribe(
       data => {
@@ -44,5 +43,4 @@ export class Orden {
       () => console.log('Movie Search Complete')
       );
   }
-
 }

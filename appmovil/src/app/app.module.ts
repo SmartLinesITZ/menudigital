@@ -28,7 +28,7 @@ import { About } from '../pages/about/about';
 import { Pruebajson } from '../pages/pruebajson/pruebajson';
 import { Bienvenida } from '../pages/bienvenida/bienvenida';
 import { Solicitudes } from '../pages/solicitudes/solicitudes';
-
+import { Verpedido } from '../pages/verpedido/verpedido';
 
 import { ServicePrueba } from '../providers/pruebaservicios.service';
 import { ServicesRestaurante } from '../providers/restaurante.service';
@@ -58,7 +58,8 @@ import { GeolocationService } from '../providers/geolocation.service';
     About,
     Solicitudes,
     Pruebajson,
-    Bienvenida
+    Bienvenida,
+    Verpedido
   ],
   imports: [
    HttpModule,
@@ -80,7 +81,7 @@ import { GeolocationService } from '../providers/geolocation.service';
     Ingredientes,
     Orden,
     Pagos,
-    //Ubicacion,
+    Ubicacion,
     Servicios,
     Panticipado,
     Reservacion,
@@ -88,7 +89,8 @@ import { GeolocationService } from '../providers/geolocation.service';
     About,
     Solicitudes,
     Pruebajson,
-    Bienvenida
+    Bienvenida,
+    Verpedido
   ],
   providers: [
     Geolocation,

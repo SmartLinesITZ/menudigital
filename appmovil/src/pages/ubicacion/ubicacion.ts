@@ -1,57 +1,55 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
-import { GeolocationService } from '../../providers/geolocation.service';
-/**
- * Generated class for the Ubicacion page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-//@IonicPage()
+import { Menu } from '../menu/menu';
+import { ServicesServicios } from '../../providers/servicios.service';
+import { AlertController } from 'ionic-angular';
 @Component({
   selector: 'page-ubicacion',
   templateUrl: 'ubicacion.html',
 })
 export class Ubicacion {
-inforest;
-iduser;
-//map : GoogleMap=null;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocator:GeolocationService) {
-    this.inforest=navParams.data.inforest;
-    this.iduser = navParams.data.iduser;
-  }
-
-/*  ionViewDidLoad() {
-    console.log('ionViewDidLoad Ubicacion');
-    //Obtener ubicación del usuario para centrar ahí el mapa
-    this.geolocator.get().then((result)=>{
-    	//Cargar mapa
-    	this.loadMap(result.coords.latitude, result.coords.longitude);
-    }).catch((err)=>console.log(err));
-  }
-loadMap(lat,lng){
-  	let location: LatLng = new LatLng(lat,lng);
-  	this.map = new GoogleMap("map",{
-  		'controls':{
-  			'compass':true,
-  			'myLocationButton':true,
-  			'indoorPicker':true,
-  			'zoom':true
-  		},
-  		'gestures':{
-  			'scroll':true,
-  			'tilt':true,
-  			'rotate':true,
-  			'zoom':true
-   		},
-   		'camera':{
-   			'latLng':location,
-   			'tilt':30,
-   			'zoom':15,
-   			'bearing':50
-   		}
-  	});
-  	//this.map.on(GoogleMapsEvent.MAP_READY).subscribe(()=>this.loadMarkers())
-  }*/
-}
+   pedido:Array<any>;
+   inforest;
+   user;
+   constructor(public navCtrl: NavController, public navParams: NavParams,  public data: ServicesServicios, public alertCtrl: AlertController) {
+     this.inforest=navParams.data.inforest;
+     this.user=navParams.data.user;
+   }
+   ionViewDidLoad() {
+     console.log('ionViewDidLoad Reservacion');
+   }
+   mandarSolicitud(inforest,user,destino)
+   {
+     //this.presentLoading();
+     this.data.pdomicilio(inforest.idrestaurante,user.idusuario,destino).subscribe(
+       data => {
+         this.pedido=data;
+         //console.log(data);
+         if(this.pedido[0].mensaje == "success")
+         {
+          this.navCtrl.push(Menu,{inforest:inforest,user:user,pedido:this.pedido[0]});
+         }else if(this.pedido[0].mensaje == "fail")
+         {
+           let alert = this.alertCtrl.create({
+             title: 'Algo salio mal',
+             subTitle: 'Intentalo de nuevo',
+             buttons: ['OK']
+           });
+           alert.present();
+         }else{
+           let alert = this.alertCtrl.create({
+             title: 'Algo salio mal',
+             subTitle: 'Intentalo de nuevo',
+             buttons: ['OK']
+           });
+           alert.present();
+         }
+       },
+       err => {
+         console.log(err);
+       },
+       () => console.log('Movie Search Complete')
+       );
+   }
+ }

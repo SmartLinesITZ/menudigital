@@ -17,7 +17,5 @@ export class Infores {
   }
   goToServiciosPage(inforest,user){
   this.navCtrl.push(Servicios,{inforest:inforest,user:user});
-   // this.navCtrl.push(Servicios);
   }
-
 }

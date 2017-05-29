@@ -34,4 +34,9 @@ export class ServicesRestaurante {
     var response = this.http.get(url).map(res => res.json());
     return response;
   }
+  readPedido(idpedido){
+    var url = 'http://smartlines.hol.es/interactividad/pedidos/read.php?idpedido='+idpedido;
+    var response = this.http.get(url).map(res => res.json());
+    return response;
+  }
 }
