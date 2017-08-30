@@ -36,39 +36,11 @@ import { ServicesUsuarios } from '../providers/usuarios.service';
 import { ServicesServicios } from '../providers/servicios.service';
 import { GeolocationService } from '../providers/geolocation.service';
 
+import { ConferenceData } from '../providers/conference-data';
+import { UserData } from '../providers/user-data';
+
 @NgModule({
-  declarations: [
-     MyApp,
-    HomePage,
-    Menu,
-    Users,
-    Restaurantes,
-    Login,
-    Registro,
-    Opciones,
-    Infores,
-    Ingredientes,
-    Orden,
-    Pagos,
-    Ubicacion,
-    Servicios,
-    Panticipado,
-    Reservacion,
-    Tabs,
-    About,
-    Solicitudes,
-    Pruebajson,
-    Bienvenida,
-    Verpedido
-  ],
-  imports: [
-   HttpModule,
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
-     IonicStorageModule.forRoot()
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
+    declarations: [
     MyApp,
     HomePage,
     Menu,
@@ -91,8 +63,41 @@ import { GeolocationService } from '../providers/geolocation.service';
     Pruebajson,
     Bienvenida,
     Verpedido
-  ],
-  providers: [
+    ],
+    imports: [
+    HttpModule,
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+    MyApp,
+    HomePage,
+    Menu,
+    Users,
+    Restaurantes,
+    Login,
+    Registro,
+    Opciones,
+    Infores,
+    Ingredientes,
+    Orden,
+    Pagos,
+    Ubicacion,
+    Servicios,
+    Panticipado,
+    Reservacion,
+    Tabs,
+    About,
+    Solicitudes,
+    Pruebajson,
+    Bienvenida,
+    Verpedido
+    ],
+    providers: [
+    UserData,
+    ConferenceData,
     Geolocation,
     GeolocationService,
     ServicesUsuarios,
@@ -102,6 +107,6 @@ import { GeolocationService } from '../providers/geolocation.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    ]
 })
 export class AppModule {}

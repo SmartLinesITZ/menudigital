@@ -14,15 +14,16 @@
   <p>{{inforest.descripcion}}</p>
   <h5>Horarios:</h5>
   <p>{{inforest.horarios}}</p>
-  <button ion-button outline item-right icon-left>
+  <!--button ion-button outline item-right icon-left>
     <ion-icon name="pin"></ion-icon>
     Ubicación
-  </button>
-  <ion-fab center bottom>
-  <!--button ion-fab (click)="goToServiciosPage(inforest)"><ion-icon name="exit"></ion-icon></button-->   
-  <button class="servicios" color="dark" ion-button small icon-right (click)="goToServiciosPage(inforest,user)">
-        Ver servicios disponibles
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-  </ion-fab>
+  </button-->
+  <div style="height: 70%; width: 100%" #mapCanvas id="map_canvas"></div>
+  <!--ion-fab center bottom>
+    <!button ion-fab (click)="goToServiciosPage(inforest)"><ion-icon name="exit"></ion-icon></button->   
+    <button class="servicios" color="dark" ion-button small icon-right (click)="goToServiciosPage(inforest,user)">
+      Ver servicios disponibles
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-fab-->
 </ion-content>
