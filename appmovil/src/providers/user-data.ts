@@ -13,7 +13,7 @@ export class UserData {
   constructor(
     public events: Events,
     public storage: Storage
-  ) {}
+    ) {}
 
   hasFavorite(sessionName: string): boolean {
     return (this._favorites.indexOf(sessionName) > -1);
@@ -30,15 +30,15 @@ export class UserData {
     }
   };
 
-  login(username: string): void {
+  login(username: string, idUser): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setUsername(username,idUser);
     this.events.publish('user:login');
   };
 
-  signup(username: string): void {
+  signup(username: string,idUser: number): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setUsername(username,idUser);
     this.events.publish('user:signup');
   };
 
@@ -48,12 +48,20 @@ export class UserData {
     this.events.publish('user:logout');
   };
 
-  setUsername(username: string): void {
+  setUsername(username: string,idUser: number): void {
     this.storage.set('username', username);
+    this.storage.set('idUser', idUser);
+    this.hasLoggedIn();
   };
 
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {
+      return value;
+    });
+  };
+
+  getIdUser(): Promise<number> {
+    return this.storage.get('idUser').then((value) => {
       return value;
     });
   };

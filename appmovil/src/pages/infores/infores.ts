@@ -45,8 +45,7 @@ export class Infores {
       });
     });
   }
- 
-  /*goToServiciosPage(inforest,user){
-    this.navCtrl.push(Servicios,{inforest:inforest,user:user});
-  }*/
+  goToServiciosPage(inforest){
+    this.navCtrl.push(Servicios,{inforest:inforest});
+  }
 }

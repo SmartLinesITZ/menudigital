@@ -8,17 +8,16 @@
 
 </ion-header>
 <ion-content padding>
-	<div class="logo">
-		<img src="assets/icon/logo.png"  alt="Ionic logo">
-	</div>
-	<h1 class="slide-title" align="center">Te damos la bienvenida {{user.username}}</h1>
-	<h3 class="slide-title" align="center">¿Estas listo(a) para la experiencia?</h3>
-	<div class="row">
-		<div class="col s6">
-		<button class="comenzar" full ion-button icon-right large clear align="right" (click)="startApp(user)">
-				Comenzar
-				<ion-icon name="arrow-forward"></ion-icon>
-			</button>
+	<div padding-top text-center *ngIf="username" class="contenido">
+		<img src="assets/img/perfil.jpg" alt="avatar">
+		<h1 class="slide-title" align="center">Bienvenido(a) {{username}}</h1> id: {{idUser}}
+		<div class="row">
+			<div class="col s6">
+				<button class="comenzar" full ion-button icon-right large clear align="right" (click)="startApp()">
+					Comenzar
+					<ion-icon name="arrow-forward"></ion-icon>
+				</button>
+			</div>
 		</div>
 	</div>
 </ion-content>

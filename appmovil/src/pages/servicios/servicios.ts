@@ -4,18 +4,18 @@ import { Menu } from '../menu/menu';
 import { Ubicacion } from '../ubicacion/ubicacion';
 import { Reservacion } from '../reservacion/reservacion';
 import { ServicesServicios } from '../../providers/servicios.service';
+import { UserData } from '../../providers/user-data';
 @Component({
   selector: 'page-servicios',
   templateUrl: 'servicios.html',
 })
 export class Servicios {
+  username;
   servicios:Array<any>;
   pedido:Array<any>;
   inforest;
-  user;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesServicios, public userData:UserData) {
     this.inforest=navParams.data.inforest;
-    this.user = navParams.data.user;
   }
   ionViewDidLoad() {
    this.data.servicios(this.inforest.idrestaurante).subscribe(
@@ -31,10 +31,13 @@ export class Servicios {
        );
   }
   goToMenuPage(inforest,user){
-    this.data.generaPedido(this.inforest.idrestaurante,user.idusuario).subscribe(
+     this.userData.getUsername().then((username) => {
+     this.username = username;
+     });
+     this.data.generaPedido(this.inforest.idrestaurante,2).subscribe(
        data => {
          this.pedido = data;
-         this.navCtrl.push(Menu,{inforest:inforest,user:user,pedido:this.pedido[0]});
+         this.navCtrl.push(Menu,{inforest:inforest,user:2,pedido:this.pedido[0]});
        },
        err => {
          console.log(err);
@@ -43,9 +46,10 @@ export class Servicios {
        );
   }
   goToUbicacionPage(inforest,user){
-  	this.navCtrl.push(Ubicacion,{inforest:inforest,user:user});
+  	this.navCtrl.push(Ubicacion,{inforest:inforest});
   }
   goToReservacionPage(inforest,user){
-    this.navCtrl.push(Reservacion,{inforest:inforest,user:user});
+    this.navCtrl.push(Reservacion,{inforest:inforest});
   }
+
 }

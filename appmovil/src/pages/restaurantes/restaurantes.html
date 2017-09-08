@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-searchbar class="buscador" color="primary" (input)="search($event, searchKey)">
+    <ion-searchbar class="buscador" color="primary" (input)="search($event, searchKey)" placeholder="Buscar restaurantes">>
     </ion-searchbar>
     <ion-buttons end>
-     <button ion-button icon-only (click)="Refresh()">
+     <button ion-button icon-only (click)="loadRestaurantes()">
       <ion-icon name="refresh"></ion-icon>
     </button>
   </ion-buttons>
@@ -16,7 +16,7 @@
   </ion-label>
   <hr color="primary">
 </ion-list-header>
-<ion-list class="restaurantes">
+<ion-list class="restaurantes" *ngIf="!sininternet">
   <ion-item-sliding  color="primary" *ngFor="let restaurante of restaurantes">
     <ion-item (click)="goToInforesPage(restaurante,user)">
       <ion-avatar item-left>
@@ -32,4 +32,8 @@
     </ion-item>      
   </ion-item-sliding>
 </ion-list>
+<p *ngIf="sininternet" class="sinconexion" align="center">
+    Sin conexión a internet
+  </p>
+
 </ion-content>

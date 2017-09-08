@@ -67,7 +67,13 @@ import { UserData } from '../providers/user-data';
     imports: [
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {},{
+      links: [
+        { component: Opciones, name: 'Opciones', segment: 'opciones' },      
+        { component: Login, name: 'Login', segment: 'login' }        
+
+      ]
+    }),
     IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],

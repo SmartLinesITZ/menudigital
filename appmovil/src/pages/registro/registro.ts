@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Login } from '../login/login';
 import { ServicesUsuarios } from '../../providers/usuarios.service';
-import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the Registro page.
  *

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController} from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController} from 'ionic-angular';
 import { Infores } from '../infores/infores';
 import { ServicesRestaurante } from '../../providers/restaurante.service';
 /**
@@ -18,26 +18,21 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
    loader: any;
    opcion:string;
    user;
+   sininternet=false;
    // restaurantes:any []=[];
    //restaurante:IRestaurante = {nombrerest:"", horarios:"",logo:""};
-   constructor(public navCtrl: NavController, public navParams: NavParams, public data:ServicesRestaurante, public loadingCtrl:LoadingController) {
+   constructor(
+     public navCtrl: NavController, 
+     public navParams: NavParams, 
+     public data:ServicesRestaurante, 
+     public loadingCtrl:LoadingController,
+     public alertCtrl: AlertController,) 
+   {
      this.opcion = navParams.data.opcion;  
      this.user = navParams.data.user;
    }
    ngOnInit() {
-
-     //loadingCtrl.presentLoading();
-     this.data.LoadRestaurantes(this.opcion).subscribe(
-       data => {
-         this.restaurantes = data;
-         console.log(data);
-         //    loadingCtrl.loader.dismiss();
-       },
-       err => {
-         console.log(err);
-       },
-       () => console.log('Movie Search Complete')
-       );
+     this.loadRestaurantes();
    }
 
    search(event, key)
@@ -46,7 +41,7 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
        this.data.searchRestaurante(event.target.value).subscribe(
          data => {
            this.restaurantes = data; //duda
-           console.log(data);
+           this.loader.dismiss();
          },
          err => {
            console.log(err);
@@ -55,17 +50,24 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
          );
      }
    }
-   Refresh()
+   loadRestaurantes()
    {
-     //this.presentLoading();
+     this.presentLoading();
      this.data.LoadRestaurantes(this.opcion).subscribe(
        data => {
+         this.sininternet=false;
          this.restaurantes = data;
-         console.log(data);
          this.loader.dismiss();
        },
        err => {
-         console.log(err);
+         this.sininternet=true;
+         let alert = this.alertCtrl.create({
+           title: 'Algo salio mal',
+           subTitle: 'Verifica tu conexión a internet y refresca la página',
+           buttons: ['OK']
+         });
+         this.loader.dismiss();
+         alert.present();
        },
        () => console.log('Movie Search Complete')
        );
@@ -76,6 +78,12 @@ import { ServicesRestaurante } from '../../providers/restaurante.service';
    goToInforesPage(restaurante,user){
      this.navCtrl.push(Infores,{restaurante:restaurante, user:user});
    }
+     presentLoading() {
+        this.loader = this.loadingCtrl.create({
+            content: "Espere un momento"
+        });
+        this.loader.present();
+    }
  }
 /*
   interface IRestaurante{

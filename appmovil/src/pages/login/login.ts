@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,  LoadingController,  AlertController } from 'ionic-angular';
 import { Registro } from '../registro/registro';
 import { Bienvenida } from '../bienvenida/bienvenida';
 import { ServicesUsuarios } from '../../providers/usuarios.service';
-import { AlertController } from 'ionic-angular';
-//import { NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { UserData } from '../../providers/user-data';
 /**
  * Generated class for the Login page.
  *
@@ -18,63 +18,70 @@ import { AlertController } from 'ionic-angular';
  })
  export class Login {
    respuesta: Array<any>;
-   login: {username?: string, password?: string} = {};
+   loader:any;
+   login: {usuario?: string, password?: string} = {};
    submitted = false;
    user;
-   constructor(public navCtrl: NavController, public navParams: NavParams, public data: ServicesUsuarios, public alertCtrl: AlertController) {
+   constructor(
+     public userData: UserData, 
+     public navCtrl: NavController, 
+     public navParams: NavParams, 
+     public data: ServicesUsuarios, 
+     public alertCtrl: AlertController,
+     public loadingCtrl:LoadingController) {
    }
 
    ionViewDidLoad() {
      console.log('ionViewDidLoad Login');
    }
- 
+
    goToRegistroPage(){
      this.navCtrl.push(Registro);
    }
-   public compruebaAcceso(usuario: string, password:string)
-   {
-     if(usuario=="" || password==""){
-       let alert = this.alertCtrl.create({
-             title: 'Acceso incorrecto',
-             subTitle: 'Complementa los datos para continuar',
-             buttons: ['OK']
-           });
-           alert.present();
-     }else{
-        this.data.consultaUsuario(usuario,password).subscribe(
+   public onLogin(form: NgForm){
+     this.presentLoading();
+     this.submitted = true;
+     this.data.consultaUsuario(this.login.usuario,this.login.password).subscribe(
        data => {
          this.respuesta = data;
-         //console.log(data);
-         if(this.respuesta[0].mensaje == "1")
-         {
-           /*let alert = this.alertCtrl.create({
-             title: 'Bienvenido '+this.respuesta[0].username,
-             subTitle: 'Disfruta de la aplicación',
-             buttons: ['OK']
-           });
-           alert.present();*/
-            this.navCtrl.push(Bienvenida,{user:this.respuesta[0]});
-       
+         if(this.respuesta[0].mensaje == "1"){
+           this.submitted = true;
+           if (form.valid) {
+             this.userData.login(this.login.usuario, this.respuesta[0].mensaje.idusuario);
+             this.loader.dismiss();
+             this.navCtrl.push(Bienvenida);
+           }
          }else{
-           let alert = this.alertCtrl.create({
-             title: 'Acceso incorrecto',
-             subTitle: 'Intentalo otra vez',
-             buttons: ['OK']
-           });
-           alert.present();
+           this.errorAcceso();
+           this.loader.dismiss();
          }
        },
        err => {
+         this.submitted = false;
          let alert = this.alertCtrl.create({
-             title: 'Algo salio mal',
-             subTitle: 'Verifica que tengas internet e intentalo otra vez',
-             buttons: ['OK']
-           });
-           alert.present();
+           title: 'Algo salio mal',
+           subTitle: 'Verifica tu conexión a internet',
+           buttons: ['OK']
+         });
+         this.loader.dismiss();
+         alert.present();
        },
        () => console.log('Movie Search Complete')
        );
-     }
-    
    }
+   public errorAcceso(){
+     this.submitted = false;
+     let alert = this.alertCtrl.create({
+       title: 'Acceso incorrecto',
+       subTitle: 'Intentalo otra vez',
+       buttons: ['OK']
+     });
+     alert.present();
+   }
+   public presentLoading() {
+        this.loader = this.loadingCtrl.create({
+         content:"Espere un momento"
+        });
+        this.loader.present();
+    }
  }
