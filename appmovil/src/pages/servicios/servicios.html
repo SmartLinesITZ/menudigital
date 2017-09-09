@@ -6,16 +6,18 @@
 -->
 <ion-header>
 	<ion-navbar color="primary">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
 		<ion-title>Servicios disponibles</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content>
-	
 	<ion-card padding>
 		<img src="{{inforest.logo}}"/>
 		<div>
-		<br>
+			<br>
 			<button ion-button full color="dark" round icon-left (click)="goToMenuPage(inforest)"><ion-icon name="time"></ion-icon> Pedido anticipado</button>
 		</div>
 		<div>

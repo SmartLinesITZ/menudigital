@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController,  Platform } from 'ionic-angular';
+import { Events, MenuController, Platform, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { UserData } from '../providers/user-data';
 import { Tabs } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
+import { Perfil } from '../pages/perfil/perfil';
+
 export interface PageInterface {
   title: string;
   name: string;
@@ -19,6 +21,15 @@ export interface PageInterface {
   templateUrl: 'app.template.html'
 })
 export class MyApp {
+    @ViewChild(Nav) nav: Nav;
+
+  // List of pages that can be navigated to from the left menu
+  // the left menu only works after login
+  // the login page disables the left menu
+  vistamenu: PageInterface[] = [
+  { title: 'Perfil', name: 'Perfil', component: Perfil, icon: 'person' }
+  ];
+  
   rootPage:any = Tabs;
 
   constructor(
@@ -38,14 +49,6 @@ export class MyApp {
         }
         this.platformReady()
       });
-
-    // decide which menu items should be hidden by current login status stored in local storage
-/*    this.userData.hasLoggedIn().then((hasLoggedIn) => {
-      this.enableMenu(hasLoggedIn === true);
-    });
-    this.enableMenu(true);
-
-    this.listenToLoginEvents()¨*/
   }
   platformReady() {
     // Call any initial plugins when ready
@@ -53,5 +56,7 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
+  openPerfil(){
+     this.nav.setRoot(Perfil);
+   }
 }

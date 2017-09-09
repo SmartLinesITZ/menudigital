@@ -13,25 +13,25 @@ import { UserData } from '../../providers/user-data';
    selector: 'page-bienvenida',
    templateUrl: 'bienvenida.html',
  })
+ 
  export class Bienvenida {
    username;
    idUser;
+
    constructor(public navCtrl: NavController, public navParams: NavParams, public userData:UserData) {
    }
+
    ionViewDidLoad() {
     this.getUser();
    }
+
    startApp(){
-     this.navCtrl.pop(Tabs);
+     this.navCtrl.push(Tabs);
    }
+
    getUser(){
       this.userData.getUsername().then((username) => {
        this.username = username;
-     });
-   }
-    getIdUser(){
-       this.userData.getIdUser().then((idUser) => {
-       this.idUser = idUser;
      });
    }
  }

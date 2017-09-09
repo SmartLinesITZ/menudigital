@@ -5,6 +5,8 @@ import { Bienvenida } from '../bienvenida/bienvenida';
 import { ServicesUsuarios } from '../../providers/usuarios.service';
 import { NgForm } from '@angular/forms';
 import { UserData } from '../../providers/user-data';
+import { Perfil } from '../perfil/perfil';
+
 /**
  * Generated class for the Login page.
  *
@@ -38,6 +40,9 @@ import { UserData } from '../../providers/user-data';
    goToRegistroPage(){
      this.navCtrl.push(Registro);
    }
+    goToPefilPage(){
+     this.navCtrl.push(Perfil);
+   }
    public onLogin(form: NgForm){
      this.presentLoading();
      this.submitted = true;
@@ -47,7 +52,7 @@ import { UserData } from '../../providers/user-data';
          if(this.respuesta[0].mensaje == "1"){
            this.submitted = true;
            if (form.valid) {
-             this.userData.login(this.login.usuario, this.respuesta[0].mensaje.idusuario);
+             this.userData.login(this.login.usuario, this.respuesta[0].idusuario);
              this.loader.dismiss();
              this.navCtrl.push(Bienvenida);
            }

@@ -29,6 +29,7 @@ import { Pruebajson } from '../pages/pruebajson/pruebajson';
 import { Bienvenida } from '../pages/bienvenida/bienvenida';
 import { Solicitudes } from '../pages/solicitudes/solicitudes';
 import { Verpedido } from '../pages/verpedido/verpedido';
+import { Perfil } from '../pages/perfil/perfil';
 
 import { ServicePrueba } from '../providers/pruebaservicios.service';
 import { ServicesRestaurante } from '../providers/restaurante.service';
@@ -62,7 +63,9 @@ import { UserData } from '../providers/user-data';
     Solicitudes,
     Pruebajson,
     Bienvenida,
-    Verpedido
+    Verpedido,
+    Perfil
+
     ],
     imports: [
     HttpModule,
@@ -99,7 +102,8 @@ import { UserData } from '../providers/user-data';
     Solicitudes,
     Pruebajson,
     Bienvenida,
-    Verpedido
+    Verpedido,
+    Perfil
     ],
     providers: [
     UserData,
