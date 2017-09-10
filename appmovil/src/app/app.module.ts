@@ -40,6 +40,11 @@ import { GeolocationService } from '../providers/geolocation.service';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
     declarations: [
     MyApp,
@@ -71,11 +76,11 @@ import { UserData } from '../providers/user-data';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp, {},{
-      links: [
+        links: [
         { component: Opciones, name: 'Opciones', segment: 'opciones' },      
         { component: Login, name: 'Login', segment: 'login' }        
 
-      ]
+        ]
     }),
     IonicStorageModule.forRoot()
     ],
@@ -106,6 +111,10 @@ import { UserData } from '../providers/user-data';
     Perfil
     ],
     providers: [
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     UserData,
     ConferenceData,
     Geolocation,

@@ -21,7 +21,8 @@ export interface PageInterface {
   templateUrl: 'app.template.html'
 })
 export class MyApp {
-    @ViewChild(Nav) nav: Nav;
+  username: string;
+  @ViewChild(Nav) nav: Nav;
 
   // List of pages that can be navigated to from the left menu
   // the left menu only works after login
@@ -40,15 +41,16 @@ export class MyApp {
     public storage: Storage,
     public splashScreen: SplashScreen
     ) {
-     this.storage.get('hasLoggedIn')
-      .then((hasLoggedIn) => {
-        if (hasLoggedIn) {
-          this.rootPage = Tabs;
-        } else {
-          this.rootPage = Login;
-        }
-        this.platformReady()
-      });
+    this.storage.get('hasLoggedIn')
+    .then((hasLoggedIn) => {
+      if (hasLoggedIn) {
+        this.rootPage = Tabs;
+      } else {
+        this.rootPage = Login;
+      }
+      this.getUsername();
+      this.platformReady();
+    });
   }
   platformReady() {
     // Call any initial plugins when ready
@@ -57,6 +59,11 @@ export class MyApp {
     });
   }
   openPerfil(){
-     this.nav.setRoot(Perfil);
-   }
+    this.nav.setRoot(Perfil);
+  }
+  getUsername() {
+    this.userData.getUsername().then((username) => {
+      this.username = username;
+    });
+  }
 }

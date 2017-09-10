@@ -1,21 +1,35 @@
 <ion-split-pane>
   <ion-menu id="vistamenu" [content]="content">
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Menú</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="outer-content">
       <ion-list>
-        <ion-list-header>
+        <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/img/perfil.jpg" class="fotoperfil">
+        </ion-avatar>
+        <h1 id="textoperfil">{{username}}</h1>
+        <ion-avatar item-right>
+          <div id="activo"></div>
+        </ion-avatar>
+        <p id="textoenlinea" item-right>En línea</p>
+      </ion-item>      
+    </ion-list>
+  </ion-header>
+
+  <ion-content class="outer-content">
+    <ion-list>
+        <ion-list-header id="textocuenta">
           Cuenta
         </ion-list-header>
-        <button ion-item menuClose (click)="openPerfil()">
-          <ion-icon item-left name="contact"></ion-icon>
-         Perfil
-        </button>
       </ion-list>
+      <button ion-item menuClose (click)="openPerfil()">
+        <ion-icon item-left name="person"></ion-icon>
+        Mi perfil
+      </button>
+      <button ion-item menuClose>
+        <ion-icon item-left name="log-out"></ion-icon>
+        Cerrar sesion
+      </button>
     </ion-content>
   </ion-menu>
- 	<ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
 </ion-split-pane>

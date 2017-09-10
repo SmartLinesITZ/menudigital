@@ -2,5 +2,7 @@
   "name": "appmovil",
   "app_id": "ee1857e3",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

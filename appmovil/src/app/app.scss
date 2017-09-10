@@ -1,5 +1,37 @@
 // http://ionicframework.com/docs/v2/theming/
+.fotoperfil{
+max-width: 40px;
+border-radius: 50%;
+margin-top:7px;
+margin-bottom:-17px;
+margin-rigth:-16px;
 
+}
+#textoperfil{
+margin-top:11px;
+margin-bottom:0px;
+font-size:20px;
+
+}
+#textoenlinea{
+	font-size:10px;
+	margin-rigth:0px;
+	margin-left:-25px;
+	margin-top:20px;
+}
+#activo { 
+width: 14px;
+height: 14px;
+background:#76FF03; 
+-moz-border-radius: 70px; 
+-webkit-border-radius: 70px; 
+border-radius: 70px;
+margin-top:18px;
+
+}
+#textocuenta{
+	margin-bottom:-20px;
+}
 
 // App Global Sass
 // --------------------------------------------------
