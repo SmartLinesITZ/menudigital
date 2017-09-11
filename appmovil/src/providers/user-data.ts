@@ -30,15 +30,15 @@ export class UserData {
     }
   };
 
-  login(username: string, idUser): void {
+  login(username: string, idUser, correo:string, telefono:string, nombre:string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username,idUser);
+    this.setUsername(username,idUser,correo,telefono,nombre);
     this.events.publish('user:login');
   };
 
-  signup(username: string,idUser: number): void {
+  signup(username: string,idUser: number, correo:string, telefono:string, nombre:string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username,idUser);
+    this.setUsername(username,idUser,correo,telefono,nombre);
     this.events.publish('user:signup');
   };
 
@@ -48,9 +48,12 @@ export class UserData {
     this.events.publish('user:logout');
   };
 
-  setUsername(username: string,idUser: number): void {
+  setUsername(username: string,idUser: number, correo:string, telefono:string, nombre:string): void {
     this.storage.set('username', username);
     this.storage.set('idUser', idUser);
+    this.storage.set('correo', correo);
+    this.storage.set('idtelefono', idUser);
+    this.storage.set('nombre', nombre);
     this.hasLoggedIn();
   };
 
@@ -65,6 +68,25 @@ export class UserData {
       return value;
     });
   };
+
+  getCorreo(): Promise<string> {
+    return this.storage.get('correo').then((value) => {
+      return value;
+    });
+  };
+
+  getTelefono(): Promise<string> {
+    return this.storage.get('telefono').then((value) => {
+      return value;
+    });
+  };
+
+  getNombre(): Promise<string> {
+    return this.storage.get('nombre').then((value) => {
+      return value;
+    });
+  };
+
 
   hasLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {

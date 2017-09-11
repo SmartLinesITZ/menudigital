@@ -82,10 +82,8 @@ import { ServicesUsuarios } from '../../providers/usuarios.service';
        () => console.log('Movie Search Complete')
        );
        }
-       
      }
      //this.presentLoading();
-     
    }
    exito(){
 

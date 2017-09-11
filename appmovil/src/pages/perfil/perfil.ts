@@ -21,8 +21,17 @@ declare var cordova: any;
  	username: string;
  	currentName;
  	correctPath;
+ 	correo;
+ 	telefono;
+ 	nombre;
  	lastImage: string = null;
  	loading: Loading;
+ 	cambios:boolean=false;
+ 	editarusername:boolean=false;
+ 	editarnombre:boolean=false;
+ 	editartelefono:boolean=false;
+ 	editarcorreo:boolean=false;
+
  	constructor(
  		public navCtrl: NavController, 
  		public navParams: NavParams, 
@@ -36,13 +45,22 @@ declare var cordova: any;
  		public platform: Platform, 
  		public loadingCtrl: LoadingController
  		) { }
- 	ngAfterViewInit() {
- 		this.getUsername();
+ 	ionViewDidLoad() {
+ 		this.getDatosUsuario();
  	}
 
- 	getUsername() {
+ 	getDatosUsuario() {
  		this.userData.getUsername().then((username) => {
- 			this.username = username;
+ 		this.username = username;
+ 		});
+ 		this.userData.getCorreo().then((correo) => {
+ 		this.correo = correo;
+ 		});
+ 		this.userData.getTelefono().then((telefono) => {
+ 		this.telefono = telefono;
+ 		});
+ 		this.userData.getNombre().then((nombre) => {
+ 		this.nombre = nombre;
  		});
  	}
  	public presentActionSheet() { //Menú que se desprende

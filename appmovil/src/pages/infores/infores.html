@@ -7,9 +7,9 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-item color="primary">
-      <ion-avatar item-left>
-        <img src="{{inforest.logo}}" class="imagen">
+    <ion-item color="primary" id="titulo">
+      <ion-avatar item-left id="imagen">
+        <img src="{{inforest.logo}}">
       </ion-avatar>
       <ion-title class="titulo">
        {{inforest.nombrerest}}
@@ -17,15 +17,20 @@
    </ion-item>
  </ion-navbar>
 </ion-header>
-<ion-content padding>
 
+<ion-content padding>
   <h3 color="primary">¿Porqué elegirnos?</h3>
   <p>{{inforest.descripcion}}</p>
   <h5 color="primary">Horarios:</h5>
   <p>{{inforest.horarios}}</p>
   <div style="height: 70%; width: 100%" #mapCanvas id="map_canvas"></div>
-  <button class="servicios" color="dark" ion-button small icon-right (click)="goToServiciosPage(inforest)">
-    Servicios
-    <ion-icon name="arrow-forward"></ion-icon>
-  </button>
 </ion-content>
+
+<ion-footer text-center color="white">
+  <ion-toolbar>
+    <button color="white" align="center" id="buttonservicios" class="servicios" ion-button (click)="goToServiciosPage(inforest)">
+     <h4 id="servicios">Ver servicios disponibles</h4>&nbsp;&nbsp;
+     <ion-icon color="primary" name="arrow-forward"></ion-icon>
+   </button>
+ </ion-toolbar>
+</ion-footer>

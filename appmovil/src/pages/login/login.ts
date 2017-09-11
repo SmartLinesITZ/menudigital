@@ -52,7 +52,7 @@ import { Perfil } from '../perfil/perfil';
          if(this.respuesta[0].mensaje == "1"){
            this.submitted = true;
            if (form.valid) {
-             this.userData.login(this.login.usuario, this.respuesta[0].idusuario);
+             this.userData.login(this.login.usuario, this.respuesta[0].idusuario, this.respuesta[0].correo, this.respuesta[0].telefono, this.respuesta[0].nombre);
              this.loader.dismiss();
              this.navCtrl.push(Bienvenida);
            }
